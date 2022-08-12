@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RESTKit_Environment">
+    <option name="currentEnv" value="DEV" />
+    <option name="envList">
+      <list>
+        <EnvList>
+          <option name="env" value="DEV" />
+          <option name="items">
+            <list>
+              <BKV>
+                <option name="enabled" value="false" />
+                <option name="key" value="baseUrl" />
+                <option name="value" value="http://localhost:8180" />
+              </BKV>
+            </list>
+          </option>
+        </EnvList>
+      </list>
+    </option>
+  </component>
+</project>

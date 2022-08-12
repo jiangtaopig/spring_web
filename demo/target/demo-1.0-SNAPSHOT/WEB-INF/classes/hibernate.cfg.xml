@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.driver_class">org.sqlite.JDBC</property>
+        <property name="connection.url">jdbc:sqlite:D:\Sping_Web\dd3\identifier.sqlite</property>
+        <!--目前 hibernate 不支持 sqlite 的方言，所以需要自定义-->
+        <property name="dialect">com.example.demo.test_sqlite.dialect.SQLiteDialect</property>
+        <property name="show_sql">true</property>
+        <property name="hbm2ddl.auto">update</property>
+        <!--注意这里是反斜杠 / 不是 .-->
+<!--        <mapping resource="com/example/demo/test_sqlite/Employee.hbm.xml"/>-->
+        <mapping resource="com/example/demo/test_sqlite/Person.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

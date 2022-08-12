@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--注意，hibernate 的实体类一定要有无参构造函数，如下的 Person 就定义了无参构造函数-->
+    <class name="com.example.demo.test_sqlite.Person" table="PERSON">
+        <meta attribute="class-description">
+            This class contains the person detail.
+        </meta>
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name" type="string"/>
+        <property name="age" column="age" type="int"/>
+    </class>
+</hibernate-mapping>
