@@ -5,8 +5,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-// 注释掉如下的 WebServlet 注解，也可以去 web.xml 中去注册 HelloServlet
-//@WebServlet(name = "helloServlet", value = "/hello-servlet2")
+// 注释掉如下的 @WebServlet 注解，也可以去 web.xml 中去注册 HelloServlet
+@WebServlet(name = "helloServlet", value = "/zjt-hello-servlet")
 public class HelloServlet extends HttpServlet {
     private String message;
 
@@ -28,7 +28,7 @@ public class HelloServlet extends HttpServlet {
         //1 获得参数
         //2 调用业务层
         //3 视图转发或者重定向
-        request.getRequestDispatcher("/WEB-INF/jsp/hello.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/download.jsp").forward(request, response);
     }
 
     public void destroy() {
