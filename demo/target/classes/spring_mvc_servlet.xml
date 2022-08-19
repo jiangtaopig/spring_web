@@ -2,9 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
-
 
     <!-- 自动扫描包 -->
     <context:component-scan base-package="com.example.demo"/>
@@ -13,7 +12,6 @@
     <!--注解加载映射器、适配器，不用之前那么麻烦配置了-->
     <mvc:annotation-driven/>
     <!--配置视图解析器-->
-
 
     <!--处理器映射器HandlerMapping:查找访问的url控制器-->
     <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
@@ -55,9 +53,9 @@
     <!--文件上传需要的配置-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- 设置默认编码 -->
-        <property name="defaultEncoding" value="utf-8"></property>
+        <property name="defaultEncoding" value="utf-8"/>
         <!-- 上传文件最大大小 10M -->
-        <property name="maxUploadSize" value="10484880"></property>
+        <property name="maxUploadSize" value="10484880"/>
     </bean>
 
 

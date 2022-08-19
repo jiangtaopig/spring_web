@@ -7,7 +7,15 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.junit.Test;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
+
+
 public class TestMyOrder {
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Test
     public void test() {
@@ -37,5 +45,19 @@ public class TestMyOrder {
             session.close();
         }
         return id;
+    }
+
+    private void add2() {
+        EntityTransaction tx = entityManager.getTransaction();
+        tx.begin();
+        // 保存p对象
+        MyOrder myOrder = new MyOrder("小炒黄牛肉");
+        entityManager.persist(myOrder);
+        tx.commit();
+    }
+
+    @Test
+    public void testAdd2() {
+        add2();
     }
 }

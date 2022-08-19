@@ -14,7 +14,7 @@
         <!--使用批处理，比如循环插入数据-->
         <property name="hibernate.jdbc.batch_size">10</property>
 
-        <!--注意这里是反斜杠 / 不是 .-->
+        <!--注意这里是反斜杠 / 不是 . -->
         <mapping resource="com/example/demo/test_sqlite/Employee.hbm.xml"/>
         <mapping resource="com/example/demo/test_sqlite/Person.hbm.xml"/>
         <mapping resource="com/example/demo/test_sqlite/MyOrder.hbm.xml"/>

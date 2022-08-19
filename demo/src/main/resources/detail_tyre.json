@@ -1,0 +1,325 @@
+{
+  "extraMap": {},
+  "top": {
+    "center": {
+      "viewAttr": {
+        "title": "审批轨迹"
+      }
+    },
+    "right": [{
+      "viewAttr": {
+        "type": "hiddenTrigger"
+      }
+    }]
+  },
+  "content": [{
+    "viewAttr": {
+      "licenseNo": "苏IUY876",
+      "cardState": "待结算",
+      "type": "card_voucher_header",
+      "cardTitle": "轮胎券"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "type": "labelRow",
+      "title": "案件信息"
+    },
+    "actions": [{
+      "expandFlag": "display1",
+      "type": "expandable"
+    }]
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "textList": ["车牌号", "苏IUY876"],
+      "expandFlag": "display1",
+      "titleColor": "0xff666768",
+      "type": "label"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "textList": ["车架号", "3G87700256387977"],
+      "expandFlag": "display1",
+      "titleColor": "0xff666768",
+      "type": "label"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "textList": ["出险日期", "2022-08-17"],
+      "expandFlag": "display1",
+      "titleColor": "0xff666768",
+      "type": "label"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "textList": ["报案人", "上海市"],
+      "expandFlag": "display1",
+      "titleColor": "0xff666768",
+      "type": "label",
+      "hiddenInfo": "name"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "textList": ["报案人联系电话", "15349154876"],
+      "expandFlag": "display1",
+      "titleColor": "0xff666768",
+      "type": "label",
+      "hiddenInfo": "phone"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "textList": ["事故类型", "鼓包"],
+      "expandFlag": "display1",
+      "titleColor": "0xff666768",
+      "type": "label"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "textList": ["受损位置", "左后方"],
+      "expandFlag": "display1",
+      "titleColor": "0xff666768",
+      "type": "label"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "textList": ["损失金额", "0"],
+      "expandFlag": "display1",
+      "titleColor": "0xff666768",
+      "type": "label"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "textList": ["赔付金额", "300"],
+      "expandFlag": "display1",
+      "titleColor": "0xff666768",
+      "type": "label"
+    }
+  }, {
+    "viewAttr": {
+      "type": "divider"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "type": "labelRow",
+      "title": "银行信息"
+    },
+    "actions": [{
+      "expandFlag": "display2",
+      "type": "expandable"
+    }]
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "textList": ["开户银行", "交通银行"],
+      "expandFlag": "display2",
+      "titleColor": "0xff666768",
+      "type": "label"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "textList": ["开户支行", "找时间"],
+      "expandFlag": "display2",
+      "titleColor": "0xff666768",
+      "type": "label"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "textList": ["户名", "滴"],
+      "expandFlag": "display2",
+      "titleColor": "0xff666768",
+      "type": "label"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "textList": ["账号", "3648273919384728365"],
+      "expandFlag": "display2",
+      "titleColor": "0xff666768",
+      "type": "label"
+    }
+  }, {
+    "viewAttr": {
+      "type": "divider"
+    }
+  }, {
+    "actions": [{
+      "expandFlag": "display3",
+      "type": "expandable"
+    }],
+    "viewAttr": {
+      "expandStatus": "true",
+      "type": "labelRow",
+      "title": "受损轮胎方位整车45°角照片"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "images": [{
+        "imageName": "照片",
+        "imagePath": "https://yk-ecs-test.oss-cn-shanghai-finance-1-pub.aliyuncs.com/ecs/export/writeoff/BK20370/20220817/1660701472374.jpg?Expires=1660716354&OSSAccessKeyId=STS.NUCuB5ZiSJtojhcftjm1mNNJk&Signature=bgLbXClIZq1ypQg6YmJL2tu5%2B2Y%3D&security-token=CAISigJ1q6Ft5B2yfSjIr5b2PviBt7Zy%2FbaEaE7SgnQ%2FYb5BoYvhiTz2IHBNfHhuAewYtPQxmWhY7fgelrBzWpVfRECBatBrq51M6h6kbs%2Fatteu7LsC0BlZ09NRU0yV5tTbRsmkZvG%2FE67fRjKpvyt3xqSABlfGdle5MJqPpId6Z9AMJGeRZiZHA9EkTWkL6rVtVx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDugXi3zn%2BCk7JN%2Fdmgfcj8Mpc3ZM8lCO3YhrImKvDztwdL8AVP%2BatMi6hJxCzKpNn1ASMKs0zeYrSMroM1fFEkPvhhRfJe1v%2FnjrhpuanenJ%2By1xtWIaRPVDRw6C9LBXB5chqAAZsUn40Kp5NPviLsvNh6Q%2BTaqH31ZSdoLJrME4dmZ0DCgQTXjsY4JwJWWtM%2FNJATrZTg6RVrNmsrS4EP7OoNBBKaJDk3zIiqm2O%2FGZ8snwZ2uEJBDe2ZRruTTn%2FS9wGXT4Q%2FYk9SToOvBetNCxMqj8jPm7MKmwO907svV01u0xfl",
+        "readOnly": "Y",
+        "required": "true"
+      }],
+      "expandFlag": "display3",
+      "type": "title_image_show_row",
+      "isFixed": "Y"
+    }
+  }, {
+    "actions": [{
+      "expandFlag": "display4",
+      "type": "expandable"
+    }],
+    "viewAttr": {
+      "expandStatus": "true",
+      "type": "labelRow",
+      "title": "受损轮胎侧远景照片"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "images": [{
+        "imageName": "照片",
+        "imagePath": "https://yk-ecs-test.oss-cn-shanghai-finance-1-pub.aliyuncs.com/ecs/export/writeoff/BK20370/20220817/1660701476729.jpg?Expires=1660716354&OSSAccessKeyId=STS.NUCuB5ZiSJtojhcftjm1mNNJk&Signature=gkmdLlsE6QYqcOwvoWmCF6cqok0%3D&security-token=CAISigJ1q6Ft5B2yfSjIr5b2PviBt7Zy%2FbaEaE7SgnQ%2FYb5BoYvhiTz2IHBNfHhuAewYtPQxmWhY7fgelrBzWpVfRECBatBrq51M6h6kbs%2Fatteu7LsC0BlZ09NRU0yV5tTbRsmkZvG%2FE67fRjKpvyt3xqSABlfGdle5MJqPpId6Z9AMJGeRZiZHA9EkTWkL6rVtVx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDugXi3zn%2BCk7JN%2Fdmgfcj8Mpc3ZM8lCO3YhrImKvDztwdL8AVP%2BatMi6hJxCzKpNn1ASMKs0zeYrSMroM1fFEkPvhhRfJe1v%2FnjrhpuanenJ%2By1xtWIaRPVDRw6C9LBXB5chqAAZsUn40Kp5NPviLsvNh6Q%2BTaqH31ZSdoLJrME4dmZ0DCgQTXjsY4JwJWWtM%2FNJATrZTg6RVrNmsrS4EP7OoNBBKaJDk3zIiqm2O%2FGZ8snwZ2uEJBDe2ZRruTTn%2FS9wGXT4Q%2FYk9SToOvBetNCxMqj8jPm7MKmwO907svV01u0xfl",
+        "readOnly": "Y",
+        "required": "true"
+      }],
+      "expandFlag": "display4",
+      "type": "title_image_show_row",
+      "isFixed": "Y"
+    }
+  }, {
+    "actions": [{
+      "expandFlag": "display5",
+      "type": "expandable"
+    }],
+    "viewAttr": {
+      "expandStatus": "true",
+      "type": "labelRow",
+      "title": "受损轮胎近景照_行驶证_临时牌"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "images": [{
+        "imageName": "照片",
+        "imagePath": "https://yk-ecs-test.oss-cn-shanghai-finance-1-pub.aliyuncs.com/ecs/export/writeoff/BK20370/20220817/1660701480240.jpg?Expires=1660716354&OSSAccessKeyId=STS.NUCuB5ZiSJtojhcftjm1mNNJk&Signature=tiOHqADoROrgU6rYokIAFpPh%2BeI%3D&security-token=CAISigJ1q6Ft5B2yfSjIr5b2PviBt7Zy%2FbaEaE7SgnQ%2FYb5BoYvhiTz2IHBNfHhuAewYtPQxmWhY7fgelrBzWpVfRECBatBrq51M6h6kbs%2Fatteu7LsC0BlZ09NRU0yV5tTbRsmkZvG%2FE67fRjKpvyt3xqSABlfGdle5MJqPpId6Z9AMJGeRZiZHA9EkTWkL6rVtVx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDugXi3zn%2BCk7JN%2Fdmgfcj8Mpc3ZM8lCO3YhrImKvDztwdL8AVP%2BatMi6hJxCzKpNn1ASMKs0zeYrSMroM1fFEkPvhhRfJe1v%2FnjrhpuanenJ%2By1xtWIaRPVDRw6C9LBXB5chqAAZsUn40Kp5NPviLsvNh6Q%2BTaqH31ZSdoLJrME4dmZ0DCgQTXjsY4JwJWWtM%2FNJATrZTg6RVrNmsrS4EP7OoNBBKaJDk3zIiqm2O%2FGZ8snwZ2uEJBDe2ZRruTTn%2FS9wGXT4Q%2FYk9SToOvBetNCxMqj8jPm7MKmwO907svV01u0xfl",
+        "readOnly": "Y",
+        "required": "true"
+      }, {
+        "imageName": "照片",
+        "imagePath": "https://yk-ecs-test.oss-cn-shanghai-finance-1-pub.aliyuncs.com/ecs/export/writeoff/BK20370/20220817/1660701483072.jpg?Expires=1660716354&OSSAccessKeyId=STS.NUCuB5ZiSJtojhcftjm1mNNJk&Signature=gob16Iz6q%2Bmo20fOYyUfvXRwMEo%3D&security-token=CAISigJ1q6Ft5B2yfSjIr5b2PviBt7Zy%2FbaEaE7SgnQ%2FYb5BoYvhiTz2IHBNfHhuAewYtPQxmWhY7fgelrBzWpVfRECBatBrq51M6h6kbs%2Fatteu7LsC0BlZ09NRU0yV5tTbRsmkZvG%2FE67fRjKpvyt3xqSABlfGdle5MJqPpId6Z9AMJGeRZiZHA9EkTWkL6rVtVx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDugXi3zn%2BCk7JN%2Fdmgfcj8Mpc3ZM8lCO3YhrImKvDztwdL8AVP%2BatMi6hJxCzKpNn1ASMKs0zeYrSMroM1fFEkPvhhRfJe1v%2FnjrhpuanenJ%2By1xtWIaRPVDRw6C9LBXB5chqAAZsUn40Kp5NPviLsvNh6Q%2BTaqH31ZSdoLJrME4dmZ0DCgQTXjsY4JwJWWtM%2FNJATrZTg6RVrNmsrS4EP7OoNBBKaJDk3zIiqm2O%2FGZ8snwZ2uEJBDe2ZRruTTn%2FS9wGXT4Q%2FYk9SToOvBetNCxMqj8jPm7MKmwO907svV01u0xfl",
+        "readOnly": "Y",
+        "required": "true"
+      }, {
+        "imageName": "照片",
+        "imagePath": "https://yk-ecs-test.oss-cn-shanghai-finance-1-pub.aliyuncs.com/ecs/export/writeoff/BK20370/20220817/1660701485818.jpg?Expires=1660716354&OSSAccessKeyId=STS.NUCuB5ZiSJtojhcftjm1mNNJk&Signature=GpkZEqln9xOvynw39UtzktkEbRo%3D&security-token=CAISigJ1q6Ft5B2yfSjIr5b2PviBt7Zy%2FbaEaE7SgnQ%2FYb5BoYvhiTz2IHBNfHhuAewYtPQxmWhY7fgelrBzWpVfRECBatBrq51M6h6kbs%2Fatteu7LsC0BlZ09NRU0yV5tTbRsmkZvG%2FE67fRjKpvyt3xqSABlfGdle5MJqPpId6Z9AMJGeRZiZHA9EkTWkL6rVtVx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDugXi3zn%2BCk7JN%2Fdmgfcj8Mpc3ZM8lCO3YhrImKvDztwdL8AVP%2BatMi6hJxCzKpNn1ASMKs0zeYrSMroM1fFEkPvhhRfJe1v%2FnjrhpuanenJ%2By1xtWIaRPVDRw6C9LBXB5chqAAZsUn40Kp5NPviLsvNh6Q%2BTaqH31ZSdoLJrME4dmZ0DCgQTXjsY4JwJWWtM%2FNJATrZTg6RVrNmsrS4EP7OoNBBKaJDk3zIiqm2O%2FGZ8snwZ2uEJBDe2ZRruTTn%2FS9wGXT4Q%2FYk9SToOvBetNCxMqj8jPm7MKmwO907svV01u0xfl",
+        "readOnly": "Y",
+        "required": "true"
+      }],
+      "expandFlag": "display5",
+      "type": "title_image_show_row",
+      "isFixed": "Y"
+    }
+  }, {
+    "actions": [{
+      "expandFlag": "display6",
+      "type": "expandable"
+    }],
+    "viewAttr": {
+      "expandStatus": "true",
+      "type": "labelRow",
+      "title": "编号DOT_批次号_驾驶证照片"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "images": [{
+        "imageName": "照片",
+        "imagePath": "https://yk-ecs-test.oss-cn-shanghai-finance-1-pub.aliyuncs.com/ecs/export/writeoff/BK20370/20220817/1660701499221.jpg?Expires=1660716354&OSSAccessKeyId=STS.NUCuB5ZiSJtojhcftjm1mNNJk&Signature=wOWTBiijBTvpIEWICy%2Fr1AlUhec%3D&security-token=CAISigJ1q6Ft5B2yfSjIr5b2PviBt7Zy%2FbaEaE7SgnQ%2FYb5BoYvhiTz2IHBNfHhuAewYtPQxmWhY7fgelrBzWpVfRECBatBrq51M6h6kbs%2Fatteu7LsC0BlZ09NRU0yV5tTbRsmkZvG%2FE67fRjKpvyt3xqSABlfGdle5MJqPpId6Z9AMJGeRZiZHA9EkTWkL6rVtVx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDugXi3zn%2BCk7JN%2Fdmgfcj8Mpc3ZM8lCO3YhrImKvDztwdL8AVP%2BatMi6hJxCzKpNn1ASMKs0zeYrSMroM1fFEkPvhhRfJe1v%2FnjrhpuanenJ%2By1xtWIaRPVDRw6C9LBXB5chqAAZsUn40Kp5NPviLsvNh6Q%2BTaqH31ZSdoLJrME4dmZ0DCgQTXjsY4JwJWWtM%2FNJATrZTg6RVrNmsrS4EP7OoNBBKaJDk3zIiqm2O%2FGZ8snwZ2uEJBDe2ZRruTTn%2FS9wGXT4Q%2FYk9SToOvBetNCxMqj8jPm7MKmwO907svV01u0xfl",
+        "readOnly": "Y",
+        "required": "true"
+      }, {
+        "imageName": "照片",
+        "imagePath": "https://yk-ecs-test.oss-cn-shanghai-finance-1-pub.aliyuncs.com/ecs/export/writeoff/BK20370/20220817/1660701502323.jpg?Expires=1660716354&OSSAccessKeyId=STS.NUCuB5ZiSJtojhcftjm1mNNJk&Signature=vJ0u6BGxS2%2FD39qzczVykGDwBr0%3D&security-token=CAISigJ1q6Ft5B2yfSjIr5b2PviBt7Zy%2FbaEaE7SgnQ%2FYb5BoYvhiTz2IHBNfHhuAewYtPQxmWhY7fgelrBzWpVfRECBatBrq51M6h6kbs%2Fatteu7LsC0BlZ09NRU0yV5tTbRsmkZvG%2FE67fRjKpvyt3xqSABlfGdle5MJqPpId6Z9AMJGeRZiZHA9EkTWkL6rVtVx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDugXi3zn%2BCk7JN%2Fdmgfcj8Mpc3ZM8lCO3YhrImKvDztwdL8AVP%2BatMi6hJxCzKpNn1ASMKs0zeYrSMroM1fFEkPvhhRfJe1v%2FnjrhpuanenJ%2By1xtWIaRPVDRw6C9LBXB5chqAAZsUn40Kp5NPviLsvNh6Q%2BTaqH31ZSdoLJrME4dmZ0DCgQTXjsY4JwJWWtM%2FNJATrZTg6RVrNmsrS4EP7OoNBBKaJDk3zIiqm2O%2FGZ8snwZ2uEJBDe2ZRruTTn%2FS9wGXT4Q%2FYk9SToOvBetNCxMqj8jPm7MKmwO907svV01u0xfl",
+        "readOnly": "Y",
+        "required": "true"
+      }, {
+        "imageName": "照片",
+        "imagePath": "https://yk-ecs-test.oss-cn-shanghai-finance-1-pub.aliyuncs.com/ecs/export/writeoff/BK20370/20220817/1660701505684.jpg?Expires=1660716354&OSSAccessKeyId=STS.NUCuB5ZiSJtojhcftjm1mNNJk&Signature=2T4WRxo7ILyQq5qu33PsKnvD0VU%3D&security-token=CAISigJ1q6Ft5B2yfSjIr5b2PviBt7Zy%2FbaEaE7SgnQ%2FYb5BoYvhiTz2IHBNfHhuAewYtPQxmWhY7fgelrBzWpVfRECBatBrq51M6h6kbs%2Fatteu7LsC0BlZ09NRU0yV5tTbRsmkZvG%2FE67fRjKpvyt3xqSABlfGdle5MJqPpId6Z9AMJGeRZiZHA9EkTWkL6rVtVx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDugXi3zn%2BCk7JN%2Fdmgfcj8Mpc3ZM8lCO3YhrImKvDztwdL8AVP%2BatMi6hJxCzKpNn1ASMKs0zeYrSMroM1fFEkPvhhRfJe1v%2FnjrhpuanenJ%2By1xtWIaRPVDRw6C9LBXB5chqAAZsUn40Kp5NPviLsvNh6Q%2BTaqH31ZSdoLJrME4dmZ0DCgQTXjsY4JwJWWtM%2FNJATrZTg6RVrNmsrS4EP7OoNBBKaJDk3zIiqm2O%2FGZ8snwZ2uEJBDe2ZRruTTn%2FS9wGXT4Q%2FYk9SToOvBetNCxMqj8jPm7MKmwO907svV01u0xfl",
+        "readOnly": "Y",
+        "required": "true"
+      }],
+      "expandFlag": "display6",
+      "type": "title_image_show_row",
+      "isFixed": "Y"
+    }
+  }, {
+    "actions": [{
+      "expandFlag": "display8",
+      "type": "expandable"
+    }],
+    "viewAttr": {
+      "expandStatus": "true",
+      "type": "labelRow",
+      "title": "车辆铭牌照片"
+    }
+  }, {
+    "actions": [{
+      "expandFlag": "display9",
+      "type": "expandable"
+    }],
+    "viewAttr": {
+      "expandStatus": "true",
+      "type": "labelRow",
+      "title": "厂家备件系统轮胎零售价格截图"
+    }
+  }, {
+    "actions": [{
+      "expandFlag": "display7",
+      "type": "expandable"
+    }],
+    "viewAttr": {
+      "expandStatus": "true",
+      "type": "labelRow",
+      "title": "其他照片"
+    }
+  }, {
+    "viewAttr": {
+      "expandStatus": "true",
+      "images": [{
+        "imageName": "照片",
+        "imagePath": "https://yk-ecs-test.oss-cn-shanghai-finance-1-pub.aliyuncs.com/ecs/export/writeoff/BK20370/20220817/1660701522092.jpg?Expires=1660716354&OSSAccessKeyId=STS.NUCuB5ZiSJtojhcftjm1mNNJk&Signature=8c0YrwRTjOxJN4nr4enG9Tg4yg8%3D&security-token=CAISigJ1q6Ft5B2yfSjIr5b2PviBt7Zy%2FbaEaE7SgnQ%2FYb5BoYvhiTz2IHBNfHhuAewYtPQxmWhY7fgelrBzWpVfRECBatBrq51M6h6kbs%2Fatteu7LsC0BlZ09NRU0yV5tTbRsmkZvG%2FE67fRjKpvyt3xqSABlfGdle5MJqPpId6Z9AMJGeRZiZHA9EkTWkL6rVtVx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDugXi3zn%2BCk7JN%2Fdmgfcj8Mpc3ZM8lCO3YhrImKvDztwdL8AVP%2BatMi6hJxCzKpNn1ASMKs0zeYrSMroM1fFEkPvhhRfJe1v%2FnjrhpuanenJ%2By1xtWIaRPVDRw6C9LBXB5chqAAZsUn40Kp5NPviLsvNh6Q%2BTaqH31ZSdoLJrME4dmZ0DCgQTXjsY4JwJWWtM%2FNJATrZTg6RVrNmsrS4EP7OoNBBKaJDk3zIiqm2O%2FGZ8snwZ2uEJBDe2ZRruTTn%2FS9wGXT4Q%2FYk9SToOvBetNCxMqj8jPm7MKmwO907svV01u0xfl",
+        "readOnly": "Y"
+      }],
+      "expandFlag": "display7",
+      "type": "title_image_show_row",
+      "isFixed": "Y"
+    }
+  }, {
+    "viewAttr": {
+      "dataArray": [{
+        "title": "2022-08-17 10:00:31",
+        "content": "审核通过，审核人员：管理员"
+      }, {
+        "title": "2022-08-17 10:00:21",
+        "content": "待复审，审核人员：管理员"
+      }, {
+        "title": "2022-08-17 09:59:05",
+        "content": "已提交，审核人员：台湾大众勿动"
+      }],
+      "type": "time_line"
+    }
+  }]
+}

@@ -47,6 +47,10 @@ public class UpLoadController {
         return "success";
     }
 
+    /**
+     * 下载，对应的是 download.jsp
+     *
+     */
     // filename 后面加上 ":.+" 是为了不过滤掉后缀，不然传 zjt.png，过滤掉后缀后只剩下 zjt 了。
     @GetMapping("/my_download/{filename:.+}")
     public ResponseEntity<byte[]> download(@PathVariable String filename) throws IOException {
@@ -68,5 +72,36 @@ public class UpLoadController {
         in.close();
         ResponseEntity<byte[]> entity = new ResponseEntity<>(body, headers, statusCode);
         return entity;//返回
+    }
+
+
+    /**
+     *
+     * 个人信息上传，对应的是 upload_info.jsp
+     *
+     * 这个和上面主要的区别就是函数中的多参数，其实每一个参数都是要和前端页面的form表单input标签的内容对应(名称一致)。
+     * form 表单中的 file 类型在SpringMVC的controller中就是对应MultipartFile类型，
+     * form表单中的text类型对应controller中的String类型。
+     * 如果上传单个文件，在服务端就用MultipartFile类型参数接收，如果多文件就用MultipartFile[]进行接收
+     */
+    @PostMapping("info_upload")
+    public String onfile(String name, String age, MultipartFile img[], MultipartFile resume) throws IOException {
+        System.out.println("name = " + name + ", age = " + age);
+        //接收img[]
+        for (int i = 0; i < img.length; i++) {
+            if (!img[i].isEmpty())//文件不空
+            {
+                File imgFile = new File("D:/fileupload/" + img[i].getOriginalFilename());
+                imgFile.createNewFile();
+                img[i].transferTo(imgFile);
+            }
+        }
+        //接收resume
+        File resumeFile = new File("D:/fileupload/" + resume.getOriginalFilename());
+        //在磁盘中创建文件，此时文件存在但没有内容
+        resumeFile.createNewFile();
+        //将接受的文件复制到创建的文件中
+        resume.transferTo(resumeFile);
+        return "sucucess";
     }
 }

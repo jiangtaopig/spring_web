@@ -4,6 +4,19 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <!--提前加载 Spring -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:/applicationContext.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 
     <!--配置DispatcherServlet:SpringMVC核心-->
     <servlet>
@@ -20,22 +33,43 @@
     <!--匹配所有的请求： / :只匹配请求，不包含所有的.jsp
                       /*:匹配所有的请求，包括jsp页面
     -->
+
     <servlet-mapping>
         <servlet-name>SpringMvc</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!--    <servlet>-->
+    <!--        <servlet-name>helloServlet</servlet-name>-->
+    <!--        <servlet-class>com.example.demo.HelloServlet</servlet-class>-->
+    <!--    </servlet>-->
 
-<!--    <servlet>-->
-<!--        <servlet-name>helloServlet</servlet-name>-->
-<!--        <servlet-class>com.example.demo.HelloServlet</servlet-class>-->
-<!--    </servlet>-->
+    <!--    <servlet-mapping>-->
+    <!--        <servlet-name>helloServlet</servlet-name>-->
+    <!--        <url-pattern>/hello-servlet2</url-pattern>-->
+    <!--    </servlet-mapping>-->
 
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>helloServlet</servlet-name>-->
-<!--        <url-pattern>/hello-servlet2</url-pattern>-->
-<!--    </servlet-mapping>-->
+    <!-- >>>>>>>>>>>>>>>>> myFilter  start-->
+    <filter>
+        <filter-name>myFilter</filter-name>
+        <filter-class>com.example.demo.filter.MyFilter</filter-class>
+        <init-param>
+            <param-name>excludePath</param-name>
+            <param-value>
+                /captchaServlet,/resources/,/v2/api-docs,/swagger-ui.html,/webjars/,/swagger-resources
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>excludeFile</param-name>
+            <param-value>png,gif,jpg,bmp,js,css,ico,html</param-value>
+        </init-param>
+    </filter>
 
+    <filter-mapping>
+        <filter-name>myFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- >>>>>>>>>>>>>>>>> myFilter  end-->
 
     <filter>
         <filter-name>encode</filter-name>
