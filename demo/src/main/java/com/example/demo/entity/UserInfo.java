@@ -7,6 +7,8 @@ public class UserInfo {
     private String userId;
     private String name;
     private int age;
+    private Address address;
+
 
     public String getUserId() {
         return userId;
@@ -30,5 +32,11 @@ public class UserInfo {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Data
+    public static class Address{
+        private String street;
+        private int room;
     }
 }

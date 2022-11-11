@@ -72,6 +72,16 @@
     <!-- >>>>>>>>>>>>>>>>> myFilter  end-->
 
     <filter>
+        <filter-name>shrinkFilter</filter-name>
+        <filter-class>com.example.demo.filter.shrink.ShrinkFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>shrinkFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
         <filter-name>encode</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>
@@ -83,5 +93,15 @@
         <filter-name>encode</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <listener>
+        <listener-class>com.example.demo.filter.RemoveSessionListener</listener-class>
+    </listener>
+
+    <!--统计在线人数-->
+    <listener>
+        <listener-class>com.example.demo.filter.OnlineNumberListener</listener-class>
+    </listener>
+
 
 </web-app>

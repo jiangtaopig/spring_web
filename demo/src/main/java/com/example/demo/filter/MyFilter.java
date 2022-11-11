@@ -12,6 +12,7 @@ public class MyFilter implements Filter {
 
     private MyHandler myHandler;
     protected static Logger logger = LoggerFactory.getLogger(MyFilter.class);
+//    private AtomicBoolean isFiltered = new AtomicBoolean(false);
 
     @Override
     public void init(FilterConfig filterConfig) {
@@ -24,11 +25,20 @@ public class MyFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         System.out.println("MyFilter >>> doFilter --------");
+//        if (isFiltered.get()) {
+//            logger.info("----- MyFilter already doFilter ------");
+//            return;
+//        }
+//        isFiltered.set(true);
+
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
+
+
         //获取 API
         String api = request.getRequestURI();
         logger.info(">>>>> api: {}", api);
+        filterChain.doFilter(request, response);
     }
 
     @Override

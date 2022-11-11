@@ -3,14 +3,19 @@ package com.example.demo;
 import com.example.demo.entity.LoginReq;
 import com.example.demo.entity.LoginResp;
 import com.example.demo.entity.UserInfo;
+import com.example.demo.entity.ZjtLoginReq;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -58,17 +63,37 @@ public class RestFulController {
     /**
      * http://localhost:8180/demo_war_exploded/login
      * 由于是 post 请求，浏览器默认不支持，所以需要使用 postman 工具来模拟
-     *
+     * <p>
      * path 和 value 的注解是一样的作用
      */
-    @RequestMapping(path = "/login", method = RequestMethod.POST)
+    @RequestMapping(path = "/login", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public LoginResp login(@RequestParam(value = "userName") String userName, @RequestParam(value = "pwd") String pwd, HttpServletRequest servletRequest) {
         System.out.println("---- login ----- userName = " + userName + " , path = " + servletRequest.getContextPath());
         // 我在 getUserInfo 中设置了 session
         HttpSession session = servletRequest.getSession();
+        // 由于在 getUserInfo 中设置了最大周期为10s， 所以10s后就获取不到 secret 了
+        // session 的周期指的是不活动时间，比如我们设置10s，那么10s 内没有访问session，session 中属性失效，
+        // 如果在9s的时候访问了 session 则重新计时10s.
+
         String secret = (String) session.getAttribute("secret");
-        System.out.println("secret = " + secret);
+        long time = session.getCreationTime();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date(time);
+        String sessionTime = simpleDateFormat.format(date);
+
+        String[] names = session.getValueNames();
+
+        if (names != null && names.length > 0) {
+            for (String name : names) {
+                System.out.println("---- name ---- " + name);
+            }
+        }
+
+        // session 最后活跃时间
+        long lastTime = session.getLastAccessedTime();
+        String lastSessionTime = simpleDateFormat.format(new Date(lastTime));
+        System.out.println("secret = " + secret + ", sessionTime = " + sessionTime + " , lastSessionTime = " + lastSessionTime);
 
         // 获取 cookie
         Cookie[] cookies = servletRequest.getCookies();
@@ -90,9 +115,8 @@ public class RestFulController {
     /**
      * 返回类型为自定义数据结构时，需要加上 @ResponseBody 的注解，
      * 因为 @ResponseBody 该方法不走视图解析器，返回一个json数据
-     *
      */
-    @PostMapping(value = "/login2")
+    @PostMapping(value = "/login2", produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public LoginResp login2(@RequestBody LoginReq req, HttpServletRequest servletRequest) {
         System.out.println("---- login2 ----- userName = " + req.getUserName());
@@ -107,6 +131,7 @@ public class RestFulController {
             }
         }
 
+//        int a = 10 / 0;
 
         if (req.getUserName().isEmpty() || req.getPwd().isEmpty()) {
             throw new RuntimeException("userName or pwd is empty");
@@ -120,15 +145,16 @@ public class RestFulController {
     public UserInfo getUserInfo(@RequestParam(value = "userId") String userId, HttpServletRequest servletRequest, HttpServletResponse response) {
         String url = servletRequest.getRequestURL().toString();
         HttpSession session = servletRequest.getSession();
+        session.setMaxInactiveInterval(10); // 设置失效时间为 10s
 
         session.setAttribute("secret", "i love u");
 
         // 获取用户的请求参数
-        Map<String, String []> map = servletRequest.getParameterMap();
+        Map<String, String[]> map = servletRequest.getParameterMap();
         if (!map.isEmpty()) {
-            Iterator<Map.Entry<String, String []>> iterator = map.entrySet().iterator();
+            Iterator<Map.Entry<String, String[]>> iterator = map.entrySet().iterator();
             while (iterator.hasNext()) {
-                Map.Entry<String, String []> entry = iterator.next();
+                Map.Entry<String, String[]> entry = iterator.next();
                 String key = entry.getKey();
                 String[] value = entry.getValue();
                 System.out.println("key = " + key);
@@ -161,6 +187,32 @@ public class RestFulController {
         userInfo.setName("pig");
         userInfo.setAge(23);
         return userInfo;
+    }
+
+    // 注意这里面的入参 ZjtLoginReq 前面不能加 @RequestBody 注解
+
+    /**
+     * 由于入参中包含 date 类型，而 login.jsp 中的日期是 字符串，
+     * 所以服务器报错：Failed to convert property value of type 'java.lang.String' to required type 'java.util.Date'
+     * 加上下面的 initBinder 方法且该方法要加 @InitBinder 注解
+     */
+    @PostMapping(value = "zjt_login")
+    public String zjtLogin(ZjtLoginReq req, HttpServletRequest servletRequest, Model model) {
+        System.out.println("---- zjtLogin ----- userName = " + req.getUserName());
+        if (req.getUserName().isEmpty() || req.getPwd().isEmpty()) {
+            throw new RuntimeException("userName or pwd is empty");
+        }
+        model.addAttribute("msg", "我是 zjt_login 接口的返回数据 ");
+        // 返回一个 jsp
+        return "zjtLoginResp";
+    }
+
+    @InitBinder
+    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
+        // 因为 login.jsp 中写的日期是 1988-08-22，所以下面的格式要保持一致，写成 ‘yyyy-MM-dd’
+        binder.registerCustomEditor(
+                Date.class,
+                new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
     }
 
 }

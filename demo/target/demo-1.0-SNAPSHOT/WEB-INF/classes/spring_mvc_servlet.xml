@@ -27,7 +27,7 @@
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-    <!--BeanNameUrlHandlerMapping处理器：绑定跳转的url=页面访问的网址-->
+    <!--BeanNameUrlHandlerMapping 处理器：绑定跳转的url=页面访问的网址-->
     <bean id="/hello4" class="com.example.demo.HelloController"/>
 
 

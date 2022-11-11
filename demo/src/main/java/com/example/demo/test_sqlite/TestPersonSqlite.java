@@ -56,7 +56,7 @@ public class TestPersonSqlite {
     }
 
     public void queryByName(SessionFactory factory, String selectName) {
-        String hql = "FROM Person E WHERE E.name = :mname";
+        String hql = "FROM Person E WHERE E.name = :mname"; // 字符占位要加冒号 (:)
         Session session = factory.openSession();
         try {
             Query query = session.createQuery(hql);

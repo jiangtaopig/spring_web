@@ -18,6 +18,14 @@
     </properties>
 
     <dependencies>
+
+        <!--依赖 demo-api-->
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>demo-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -158,6 +166,38 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.29</version>
         </dependency>
+
+        <!-- dozer -->
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
+            <version>5.4.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.2.0.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.9.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.vivo</groupId>
+            <artifactId>vpush-server-sdk</artifactId>
+            <version>2.3</version>
+        </dependency>
+
 
     </dependencies>
 

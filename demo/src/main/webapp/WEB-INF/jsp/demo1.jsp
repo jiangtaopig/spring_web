@@ -5,6 +5,10 @@
 </head>
 <body>
 <%--接受传递的参数--%>
-${demo1}
+${demo1_attr1}
+<br>
+${demo1_attr2}
+<br>
+${demo1_attr3}
 </body>
 </html>

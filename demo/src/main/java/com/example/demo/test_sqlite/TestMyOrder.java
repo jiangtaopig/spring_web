@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.junit.Test;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -18,6 +19,7 @@ public class TestMyOrder {
     private EntityManager entityManager;
 
     @Test
+    @Transactional
     public void test() {
         SessionFactory factory;
         try {
@@ -26,9 +28,14 @@ public class TestMyOrder {
             System.err.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex);
         }
-        add(factory, "麻婆豆腐");
+
+        // 尽管报错了还是会把第一条数据 ("小炒黄牛肉") 插入
+        add(factory, "哈哈哈");
+//        int b = 20 / 0;
+//        add(factory, "臭豆腐");
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public Integer add(SessionFactory factory, String title) {
         Session session = factory.openSession();
         Transaction tx = null;
@@ -44,6 +51,7 @@ public class TestMyOrder {
         } finally {
             session.close();
         }
+        int b = 20 / 0;
         return id;
     }
 
