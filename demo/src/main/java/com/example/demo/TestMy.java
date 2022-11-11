@@ -90,6 +90,7 @@ public class TestMy {
             System.out.println("-------------------------");
         }
 
+        // 测试 修改 commit msg
 
         AlarmInfoPlate alarmInfoPlate = new AlarmInfoPlate();
         alarmInfoPlate.setDeviceName("VM00891_01");
