@@ -17,14 +17,14 @@ public class HttpPost {
         String url = "https://vehiclec.market.alicloudapi.com/s/api/ocr/vehicleCertificate";
         Map<String, Object> params = new HashMap<>();
         params.put("imgUrl",
-                "https://insaic-ocr-test.oss-cn-shanghai-finance-1-pub.aliyuncs.com/ocr/aliyun/2022/11/10/XFile1668072194750191.jpg?Expires=1668075795&OSSAccessKeyId=STS.NSzbvQV7UP3k9A4LGp8BM4L9e&Signature=j3Pm1kDKfHrI9emd7qp9huzF538%3D&security-token=CAISjgJ1q6Ft5B2yfSjIr5DPKczlu%2Bh05%2FGAO2eFqEclNM1h24mShzz2IHpIe3FhBO8dtPUymWBY6%2FkclrBzWpVfRECBatBrq51M6h6kbs%2Fatteu7LsC0F4qs4g9U0yV5tTbRsmkZvG%2FE67fRjKpvyt3xqSABlfGdle5MJqPpId6Z9AMJGeRZiZHA9EkTWkL6rVtVx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDugXi3zn%2BCk7JN%2Fdmgfcj8Mpc3ZM8lCO3YhrImKvDztwdL8AVP%2BatMi6hJxCzKpNn1ASMKuUnZa7uJrYY1fVIkNvhnRPBe0v%2Fnjrh5vPfalo%2ByzB1XeP1YSDiaXp%2Bwb2dr8yYSi7wagAFXxXDbXzQcGJZFUF2IwYjPMmorRfILy2T0jYoSanVbECOLuw6If4530PPZUXG0SnCHhDoSQCRwwKd82K%2BvWlKFBw4biOmMZIT0WbqSS5KIpBN8q0jKHbg2rqsUnluOX2yhK06IuSJaDjYoVNySQ8u%2Bfc%2Bf8sHALkMl4jivDh7x1g%3D%3D"
+                "https://insaic-ocr-test.oss-cn-shanghai-finance-1-pub.aliyuncs.com/ocr/aliyun/2022/11/16/XFile1668582907041863.jpg?Expires=1668586509&OSSAccessKeyId=STS.NUTKyUmBYJ6TgZCu9t5th7cYb&Signature=rIyRET2JIu8FhrF2xRBXq%2Bc0T0g%3D&security-token=CAISjgJ1q6Ft5B2yfSjIr5bhAMPhgJ14%2FfS%2FZXzykTkhOftE2KbygDz2IHpIe3FhBO8dtPUymWBY6%2FkclrBzWpVfRECBatBrq51M6h6kbs%2Fatteu7LsC0Etk9%2Fw8U0yV5tTbRsmkZvG%2FE67fRjKpvyt3xqSABlfGdle5MJqPpId6Z9AMJGeRZiZHA9EkTWkL6rVtVx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDugXi3zn%2BCk7JN%2Fdmgfcj8Mpc3ZM8lCO3YhrImKvDztwdL8AVP%2BatMi6hJxCzKpNn1ASMKuUnZa7uJrYY1fVIkNvhnRPBe0v%2Fnjrh5vPfalo%2ByzB1XeP1YSDiaXp%2Bwb2dr8yYSi7wagAFZiygMA3Xvjs1nmNNkF4iMeuu0rQPD8fE49Yc%2Bu0zGuy9%2Bm9hvWuGRMBmS0vMAeR7PXqUS4sfJ%2Ftc3MBibuKKaSoeHn1iSPDvK6Eb9LVrEb0Dx5EhqPrfKv%2FHQBGc2db9pWRpbWDsViWv%2F5CDmKMgN4PmAdjtfb%2FvnbchtLdmC1w%3D%3D"
         );
 
         doPost(url, params);
     }
 
-    public static String doPost(String httpUrl, Map<String, Object> params) {
-        String result = null;
+    public static void doPost(String httpUrl, Map<String, Object> params) {
+        String result;
         //try..catch外声明资源,方便finally统一关闭资源
         HttpURLConnection httpURLConnection = null;
         OutputStream os = null;
@@ -52,10 +52,8 @@ public class HttpPost {
             //判断是否携带参数
             if (!params.isEmpty()) {
                 Set<String> keySet = params.keySet();
-                Iterator iterator = keySet.iterator();
-                while (iterator.hasNext()) {
-                    String key = (String) iterator.next();
-                    Object value = (Object) params.get(key);
+                for (String key : keySet) {
+                    Object value = params.get(key);
                     if (!stringBuffer.toString().equals("")) {
                         stringBuffer.append("&");
                     }
@@ -74,8 +72,8 @@ public class HttpPost {
                 is = httpURLConnection.getInputStream();
                 //缓冲流包装字符输入流,放入内存中,读取效率更快
                 br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-                StringBuffer stringBuffer1 = new StringBuffer();
-                String line = null;
+                StringBuilder stringBuffer1 = new StringBuilder();
+                String line;
                 while ((line = br.readLine()) != null) {
                     //将每次读取的行进行保存
                     stringBuffer1.append(line);
@@ -107,7 +105,6 @@ public class HttpPost {
                 e.printStackTrace();
             }
         }
-        return result;
     }
 
 }

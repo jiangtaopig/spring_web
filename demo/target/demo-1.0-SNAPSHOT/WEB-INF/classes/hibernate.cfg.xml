@@ -19,4 +19,6 @@
         <mapping resource="com/example/demo/test_sqlite/Person.hbm.xml"/>
         <mapping resource="com/example/demo/test_sqlite/MyOrder.hbm.xml"/>
     </session-factory>
+
+
 </hibernate-configuration>

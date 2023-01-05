@@ -94,7 +94,6 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:3.2.9.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:3.2.9.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:3.2.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.8.0" />
           <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.7" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.29" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.7.29" />
@@ -106,6 +105,8 @@
           <element id="library" level="project" name="Maven: joda-time:joda-time:2.9.4" />
           <element id="library" level="project" name="Maven: org.jetbrains:annotations:23.0.0" />
           <element id="library" level="project" name="Maven: com.vivo:vpush-server-sdk:2.3" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.6.9" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.9.6" />
         </element>
       </element>
       <element id="directory" name="META-INF">

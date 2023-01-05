@@ -1,0 +1,11 @@
+[DEBUG][22-11-25][org.springframework.context.annotation.AnnotationConfigApplicationContext]Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@16b4a017
+[DEBUG][22-11-25][org.springframework.beans.factory.support.DefaultListableBeanFactory]Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+[DEBUG][22-11-25][org.springframework.beans.factory.support.DefaultListableBeanFactory]Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerProcessor'
+[DEBUG][22-11-25][org.springframework.beans.factory.support.DefaultListableBeanFactory]Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+[DEBUG][22-11-25][org.springframework.beans.factory.support.DefaultListableBeanFactory]Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+[DEBUG][22-11-25][org.springframework.beans.factory.support.DefaultListableBeanFactory]Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+[DEBUG][22-11-25][org.springframework.beans.factory.support.DefaultListableBeanFactory]Creating shared instance of singleton bean 'org.springframework.context.annotation.internalPersistenceAnnotationProcessor'
+[DEBUG][22-11-25][org.springframework.beans.factory.support.DefaultListableBeanFactory]Creating shared instance of singleton bean 'myConfig'
+[DEBUG][22-11-25][org.springframework.beans.factory.support.DefaultListableBeanFactory]Creating shared instance of singleton bean 'sportDecorate'
+[DEBUG][22-11-25][org.springframework.beans.factory.support.DefaultListableBeanFactory]Creating shared instance of singleton bean 'bmwCar2'
+[DEBUG][22-11-25][org.springframework.beans.factory.support.DefaultListableBeanFactory]Autowiring by type from bean name 'bmwCar2' via factory method to bean named 'sportDecorate'

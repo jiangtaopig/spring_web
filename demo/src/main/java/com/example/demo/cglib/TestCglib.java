@@ -10,5 +10,6 @@ public class TestCglib {
         MyDao myDao = new MyDao();
         MyDao factory = (MyDao) new MyFactory(myDao).getProxyInstance();
         factory.save();
+
     }
 }

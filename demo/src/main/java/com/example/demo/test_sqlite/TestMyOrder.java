@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.junit.Test;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -30,10 +31,11 @@ public class TestMyOrder {
         }
 
         // 尽管报错了还是会把第一条数据 ("小炒黄牛肉") 插入
-        add(factory, "哈哈哈");
-//        int b = 20 / 0;
+        add(factory, "鸡肉");
 //        add(factory, "臭豆腐");
+//        TransactionalAspectSupport
     }
+
 
     @Transactional(rollbackFor = Exception.class)
     public Integer add(SessionFactory factory, String title) {
@@ -51,7 +53,9 @@ public class TestMyOrder {
         } finally {
             session.close();
         }
-        int b = 20 / 0;
+        if ("鸡肉".equals(title)) {
+            throw new RuntimeException("菜已存在");
+        }
         return id;
     }
 

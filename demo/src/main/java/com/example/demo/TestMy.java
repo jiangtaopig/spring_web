@@ -20,6 +20,8 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.BiFunction;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Component
 public class TestMy {
@@ -103,7 +105,7 @@ public class TestMy {
 
         alarmInfoPlate.setResult(map);
 
-        String alarmJson =  JSONObject.toJSONString(alarmInfoPlate);
+        String alarmJson = JSONObject.toJSONString(alarmInfoPlate);
         System.out.println("=============================================================");
         System.out.println("alarmJson = " + alarmJson);
         System.out.println("=============================================================");
@@ -143,7 +145,7 @@ public class TestMy {
 //        map.computeIfAbsent()
         String data = map.computeIfAbsent("m", k -> k + "3");
 
-        System.out.println("data === > " + data);
+        System.out.println("data === > " + data + ", map = " + map);
 
         String d = map.computeIfAbsent("m", k -> k + "_2");
         System.out.println("d >>> " + d);
@@ -319,7 +321,7 @@ public class TestMy {
 
         }, "thread--1");
 
-        Thread thread2= new Thread(() -> {
+        Thread thread2 = new Thread(() -> {
             System.out.println(Thread.currentThread().getName() + ">>> start -----");
 
             synchronized (lock) {
@@ -425,7 +427,7 @@ public class TestMy {
     public void testBlockingQueue() {
         ArrayBlockingQueue<Integer> arrayBlockingQueue = new ArrayBlockingQueue<>(1);
         int times = 10;
-        Thread consumer = new Thread(() ->{
+        Thread consumer = new Thread(() -> {
             for (int i = 0; i < times; i++) {
                 try {
                     System.out.println(Thread.currentThread().getName() + " ------- take ------");
@@ -438,7 +440,7 @@ public class TestMy {
         }, "consumer-thread");
 
 
-        Thread producer = new Thread(() ->{
+        Thread producer = new Thread(() -> {
             for (int i = 0; i < times; i++) {
                 System.out.println(Thread.currentThread().getName() + " before put .... " + i);
                 try {
@@ -455,10 +457,16 @@ public class TestMy {
     }
 
 
+    @Test
+    public void testCompletableFuture2() throws ExecutionException, InterruptedException {
+        getUserInfo();
+    }
+
     /**
      * 使用 CompletableFuture 来异步执行多个接口，获取接口的执行结果
      */
     public UserInfo2 getUserInfo() throws ExecutionException, InterruptedException {
+        long start = System.currentTimeMillis();
         ExecutorService service = new ThreadPoolExecutor(3, 5, 60, TimeUnit.SECONDS, new ArrayBlockingQueue<>(5));
 
         // 现在想要获取 用户信息，但是用户基础信息和分数信息不在同一个接口，就可以如下去处理
@@ -466,7 +474,6 @@ public class TestMy {
         long id = 10010;
 
         CompletableFuture<User2> userFuture = CompletableFuture.supplyAsync(() -> {
-
             try {
                 return getRemoteUserAndFill(id);
             } catch (InterruptedException e) {
@@ -482,51 +489,125 @@ public class TestMy {
                 e.printStackTrace();
             }
             return null;
-
         }, service);
 
-        CompletableFuture.allOf(userFuture, scoreFuture).join();
+        // 等任务都执行完
+        CompletableFuture all = CompletableFuture.allOf(userFuture, scoreFuture);
+
+        System.out.println(".....阻塞");
+
+        // 阻塞住，等上面的2个任务执行完
+        all.join();
+
+        System.out.println("------阻塞结束-----------");
 
         User2 user2 = userFuture.get();
         UserScore userScore = scoreFuture.get();
         userInfo.setName(user2.getUserName());
         userInfo.setAge(user2.getUserAge());
         userInfo.setScore(userScore.getScore());
+
+        System.out.println("=== userInfo === " + userInfo);
+
+        long end = System.currentTimeMillis();
+        long cost = end - start;
+        System.out.println(">>>>>> cost = " + cost);
         return userInfo;
     }
 
-    private UserInfo2 getUserInfoBySync() throws ExecutionException, InterruptedException {
-        ExecutorService service = new ThreadPoolExecutor(3, 5, 60, TimeUnit.SECONDS, new ArrayBlockingQueue<>(5));
-        UserInfo2 userInfo = new UserInfo2();
-        long id = 10010;
-//        CompletableFuture<Void> userFuture = CompletableFuture.runAsync(() -> {
-//            try {
-//                getRemoteUserAndFill(id, userInfo);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
+    @Test
+    public void test4() throws InterruptedException {
+        System.out.println("--------- start ---------------");
+        long start = System.currentTimeMillis();
+        CountDownLatch countDownLatch = new CountDownLatch(1);
+        CompletableFuture<User2> user2CompletableFuture = CompletableFuture.supplyAsync(() -> {
+            return getUser2();
+        }).whenCompleteAsync((user2, throwable) -> {
+            System.out.println("name = "+user2.userName+", age = " + user2.userAge);
+            countDownLatch.countDown();
+        });
+//                .thenAcceptAsync(user2 -> {
+//            System.out.println("name = "+user2.userName+", age = " + user2.userAge);
 //        });
 
-//        getRemoteUserAndFill(id, userInfo);
-//        getRemoteScoreAndFill(id, userInfo);
+//        user2CompletableFuture.join();
+        // 不适用 countDownLatch 那么就得使用 user2CompletableFuture 的 join 或者 get 方法，以用来阻塞当前线程，直到任务完成
+        countDownLatch.await();
+        long end = System.currentTimeMillis();
+        System.out.println("------------------------------ cost ------" +(end - start));
+    }
 
-//        CompletableFuture<Void> scoreFuture = CompletableFuture.runAsync(() -> {
-//            try {
-//                getRemoteScoreAndFill(id, userInfo);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        });
-//
-//        userFuture.get();
-//        scoreFuture.get();
-        return userInfo;
+    private User2 getUser2() {
+        long start = System.currentTimeMillis();
+        // 模拟接口请求200毫秒
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        User2 user2 = new User2();
+        user2.setUserName("zjy");
+        user2.setUserAge(23);
+        System.out.println("getUser2 " + ", time consuming is : " + (System.currentTimeMillis() - start));
+        return user2;
+    }
+
+    @Test
+    public void testCompletableFuture() {
+        System.out.println("---------------- start -----------------");
+        long start = System.currentTimeMillis();
+        CompletableFuture<UserInfo2> userScoreCompletableFuture = CompletableFuture.supplyAsync(() -> {
+            try {
+                return getRemoteUserAndFill(101);
+            } catch (InterruptedException e) {
+                System.out.println("异常2 ....");
+                e.printStackTrace();
+            }
+            return null;
+        }).thenCombine(CompletableFuture.supplyAsync(() -> {
+            try {
+                return getRemoteScoreAndFill(101);
+            } catch (InterruptedException e) {
+                System.out.println("异常1 ....");
+                e.printStackTrace();
+            }
+            return null;
+        }), (a, b) -> {
+            System.out.println("a-----------------" + a + ", b = " + b);
+            String name = a.userName;
+            int age = a.userAge;
+            double score = b.getScore();
+
+            UserInfo2 combine = new UserInfo2();
+            combine.setName(name);
+            combine.setAge(age);
+            combine.setScore(score);
+            return combine;
+        }).exceptionally(throwable -> {
+            System.out.println("异常了.................");
+            return null;
+        });
+
+//         get方法和join方法功能一样，就是没有编译验证，不需要抛出异常
+        UserInfo2 userInfo = userScoreCompletableFuture.join();
+
+        System.out.println("userInfo = " + userInfo);
+
+        try {
+            UserInfo2 userInfo2 = userScoreCompletableFuture.get();
+            System.out.println("userScore = " + userInfo2);
+            long cost = System.currentTimeMillis() - start;
+            System.out.println("总耗时 >>>> ：" + cost);
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+        System.out.println("---------------- end --------------------");
     }
 
     private User2 getRemoteUserAndFill(long id) throws InterruptedException {
         long start = System.currentTimeMillis();
         // 模拟接口请求200毫秒
-        Thread.sleep(200);
+        Thread.sleep(1000);
         User2 user2 = new User2();
         user2.setUserName("zjy");
         user2.setUserAge(23);
@@ -538,11 +619,269 @@ public class TestMy {
         long start = System.currentTimeMillis();
         // 模拟接口请求耗时
         System.out.println("getRemoteScoreAndFill id = " + id);
-        Thread.sleep(260);
+        Thread.sleep(2600);
         UserScore userScore = new UserScore();
         userScore.setScore(99.8);
+        if (id == 100)
+        throw new RuntimeException("id = 100, xxxx异常");
         System.out.println("getRemoteScoreAndFill id = " + id + " , time consuming is : " + (System.currentTimeMillis() - start));
         return userScore;
+    }
+
+
+    @Test
+    public void testJavaStream() {
+        UserInfo2 info1 = new UserInfo2();
+        info1.setName("张三");
+        info1.setAge(20);
+        info1.setScore(98);
+
+        UserInfo2 info2 = new UserInfo2();
+        info2.setName("李四");
+        info2.setAge(22);
+        info2.setScore(89);
+
+        UserInfo2 info3 = new UserInfo2();
+        info3.setName("王五");
+        info3.setAge(19);
+        info3.setScore(92);
+
+        List<UserInfo2> userInfo2List = Arrays.asList(info1, info2, info3);
+
+        List<UserInfo2> userInfo2s = userInfo2List.stream().filter(userInfo2 -> {
+            return userInfo2.getScore() > 90;
+        }).collect(Collectors.toList());
+
+        System.out.println("userInfo2s = " + userInfo2s);
+
+        // 分数最高的用户
+
+        Optional<UserInfo2> maxScoreUser = userInfo2List.stream().max(Comparator.comparingDouble(UserInfo2::getScore));
+
+        System.out.println("maxScoreUser = " + maxScoreUser.get());
+
+
+    }
+
+    @Test
+    public void testJ() {
+        String content = "{\n" +
+                "    \"extraMap\":{\n" +
+                "\n" +
+                "    },\n" +
+                "    \"top\":{\n" +
+                "        \"center\":{\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"title\":\"审批轨迹\"\n" +
+                "            }\n" +
+                "        },\n" +
+                "        \"right\":[\n" +
+                "            {\n" +
+                "                \"viewAttr\":{\n" +
+                "                    \"type\":\"hiddenTrigger\"\n" +
+                "                }\n" +
+                "            }\n" +
+                "        ]\n" +
+                "    },\n" +
+                "    \"content\":[\n" +
+                "        {\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"licenseNo\":\"\",\n" +
+                "                \"cardState\":\"待提交\",\n" +
+                "                \"type\":\"card_voucher_header\",\n" +
+                "                \"cardTitle\":\"\"\n" +
+                "            }\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"dataArray\":[\n" +
+                "                    {\n" +
+                "                        \"title\":\"2022-11-14 10:51:34\",\n" +
+                "                        \"content\":\"已扫码，审核人员：UI自动化\"\n" +
+                "                    }\n" +
+                "                ],\n" +
+                "                \"type\":\"time_line\"\n" +
+                "            }\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"expandStatus\":\"true\",\n" +
+                "                \"type\":\"labelRow\",\n" +
+                "                \"title\":\"核销信息\"\n" +
+                "            },\n" +
+                "            \"actions\":[\n" +
+                "                {\n" +
+                "                    \"expandFlag\":\"display1\",\n" +
+                "                    \"type\":\"expandable\"\n" +
+                "                }\n" +
+                "            ]\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"expandStatus\":\"true\",\n" +
+                "                \"textList\":[\n" +
+                "                    \"车牌号\",\n" +
+                "                    \"\"\n" +
+                "                ],\n" +
+                "                \"expandFlag\":\"display1\",\n" +
+                "                \"titleColor\":\"0xff666768\",\n" +
+                "                \"type\":\"label\"\n" +
+                "            }\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"expandStatus\":\"true\",\n" +
+                "                \"textList\":[\n" +
+                "                    \"车架号\",\n" +
+                "                    \"\"\n" +
+                "                ],\n" +
+                "                \"expandFlag\":\"display1\",\n" +
+                "                \"titleColor\":\"0xff666768\",\n" +
+                "                \"type\":\"label\"\n" +
+                "            }\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"expandStatus\":\"true\",\n" +
+                "                \"textList\":[\n" +
+                "                    \"进店保养日期\",\n" +
+                "                    \"\"\n" +
+                "                ],\n" +
+                "                \"expandFlag\":\"display1\",\n" +
+                "                \"titleColor\":\"0xff666768\",\n" +
+                "                \"type\":\"label\"\n" +
+                "            }\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"expandStatus\":\"true\",\n" +
+                "                \"textList\":[\n" +
+                "                    \"进店里程数\",\n" +
+                "                    \"storeMileage\"\n" +
+                "                ],\n" +
+                "                \"expandFlag\":\"display1\",\n" +
+                "                \"titleColor\":\"0xff666768\",\n" +
+                "                \"type\":\"label\",\n" +
+                "                \"hiddenInfo\":\"name\"\n" +
+                "            }\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"expandStatus\":\"true\",\n" +
+                "                \"textList\":[\n" +
+                "                    \"首次保养日期\",\n" +
+                "                    \"firstMaintainDate\"\n" +
+                "                ],\n" +
+                "                \"expandFlag\":\"display1\",\n" +
+                "                \"titleColor\":\"0xff666768\",\n" +
+                "                \"type\":\"label\",\n" +
+                "                \"hiddenInfo\":\"phone\"\n" +
+                "            }\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"expandStatus\":\"true\",\n" +
+                "                \"textList\":[\n" +
+                "                    \"首次里程数\",\n" +
+                "                    \"firstMileage\"\n" +
+                "                ],\n" +
+                "                \"expandFlag\":\"display1\",\n" +
+                "                \"titleColor\":\"0xff666768\",\n" +
+                "                \"type\":\"label\"\n" +
+                "            }\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"expandStatus\":\"true\",\n" +
+                "                \"textList\":[\n" +
+                "                    \"赔付金额\",\n" +
+                "                    \"字段待定\"\n" +
+                "                ],\n" +
+                "                \"expandFlag\":\"display1\",\n" +
+                "                \"titleColor\":\"0xff666768\",\n" +
+                "                \"type\":\"label\"\n" +
+                "            }\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"type\":\"divider\"\n" +
+                "            }\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"expandStatus\":\"true\",\n" +
+                "                \"type\":\"labelRow\",\n" +
+                "                \"title\":\"银行信息\"\n" +
+                "            },\n" +
+                "            \"actions\":[\n" +
+                "                {\n" +
+                "                    \"expandFlag\":\"display2\",\n" +
+                "                    \"type\":\"expandable\"\n" +
+                "                }\n" +
+                "            ]\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"expandStatus\":\"true\",\n" +
+                "                \"textList\":[\n" +
+                "                    \"开户银行\",\n" +
+                "                    \"字段待定\"\n" +
+                "                ],\n" +
+                "                \"expandFlag\":\"display2\",\n" +
+                "                \"titleColor\":\"0xff666768\",\n" +
+                "                \"type\":\"label\"\n" +
+                "            }\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"expandStatus\":\"true\",\n" +
+                "                \"textList\":[\n" +
+                "                    \"开户支行\",\n" +
+                "                    \"\"\n" +
+                "                ],\n" +
+                "                \"expandFlag\":\"display2\",\n" +
+                "                \"titleColor\":\"0xff666768\",\n" +
+                "                \"type\":\"label\"\n" +
+                "            }\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"expandStatus\":\"true\",\n" +
+                "                \"textList\":[\n" +
+                "                    \"户名\",\n" +
+                "                    \"\"\n" +
+                "                ],\n" +
+                "                \"expandFlag\":\"display2\",\n" +
+                "                \"titleColor\":\"0xff666768\",\n" +
+                "                \"type\":\"label\"\n" +
+                "            }\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"expandStatus\":\"true\",\n" +
+                "                \"textList\":[\n" +
+                "                    \"账号\",\n" +
+                "                    \"\"\n" +
+                "                ],\n" +
+                "                \"expandFlag\":\"display2\",\n" +
+                "                \"titleColor\":\"0xff666768\",\n" +
+                "                \"type\":\"label\"\n" +
+                "            }\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"viewAttr\":{\n" +
+                "                \"type\":\"divider\"\n" +
+                "            }\n" +
+                "        }\n" +
+                "        \n" +
+                "    ]\n" +
+                "}";
+        JSONObject jsonObject = JSONObject.parseObject(content);
+        List contentList = (List) jsonObject.get("content");
+
+
+        System.out.println("-------------" + contentList);
+
     }
 
     @Data
@@ -563,7 +902,14 @@ public class TestMy {
         double score;
     }
 
-    static class AlarmInfoPlate{
+    @Data
+    static class UserCombine {
+        private String name;
+        private int age;
+        private double score;
+    }
+
+    static class AlarmInfoPlate {
         private String deviceName;
         private Map<String, PlateResult> result = new HashMap<>();
 

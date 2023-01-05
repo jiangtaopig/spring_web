@@ -1,10 +1,17 @@
 package com.example.demo;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.demo.entity.LoginReq;
 import com.example.demo.entity.LoginResp;
 import com.example.demo.entity.UserInfo;
 import com.example.demo.entity.ZjtLoginReq;
+import com.example.demo.service.IDataService;
+import org.jetbrains.annotations.Range;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
@@ -14,6 +21,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -21,9 +29,24 @@ import java.util.Map;
 import java.util.Set;
 
 
-// @RestControoler:该类下所有方法不走视图解析器，返回一个json数据
+// @RestController:该类下所有方法不走视图解析器，返回一个json数据
 @Controller
+@PropertySource({"classpath:application.properties"})
 public class RestFulController {
+
+    /**
+     * 由于我在项目中有2个IDataService 的实现类 OracleService 和 SqlService，所以会报错：
+     * No qualifying bean of type 'com.example.demo.service.IDataService' available:
+     * expected single matching bean but found 2: oracleService,sqlService
+     *
+     * 所以需要加上注解 Qualifier 来限定具体调用哪个
+     */
+    @Qualifier("oracleService") // 使用 Component 、Repository (而 Repository 本身被 @Component 标记，所以它们都是间接标记了 @Componen) 等注解生成的 Bean , ID 默认是类名首字母小写
+    @Autowired
+    IDataService dataService;
+
+    @Value("${passWord}")
+    String passWord;
 
     /**
      * http://localhost:8180/demo_war_exploded/add?a=3&b=4
@@ -60,13 +83,19 @@ public class RestFulController {
         return "addPostRest";
     }
 
+    @RequestMapping(value = "/sum/{b}", method = RequestMethod.GET)
+    @ResponseBody
+    public int sum(@PathVariable @Range(from = 2,to = 5) int b) {
+        return  b;
+    }
+
     /**
      * http://localhost:8180/demo_war_exploded/login
      * 由于是 post 请求，浏览器默认不支持，所以需要使用 postman 工具来模拟
      * <p>
      * path 和 value 的注解是一样的作用
      */
-    @RequestMapping(path = "/login", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
     @ResponseBody
     public LoginResp login(@RequestParam(value = "userName") String userName, @RequestParam(value = "pwd") String pwd, HttpServletRequest servletRequest) {
         System.out.println("---- login ----- userName = " + userName + " , path = " + servletRequest.getContextPath());
@@ -116,10 +145,28 @@ public class RestFulController {
      * 返回类型为自定义数据结构时，需要加上 @ResponseBody 的注解，
      * 因为 @ResponseBody 该方法不走视图解析器，返回一个json数据
      */
-    @PostMapping(value = "/login2", produces = "text/plain;charset=UTF-8")
+    @PostMapping(value = "/login2")
     @ResponseBody
-    public LoginResp login2(@RequestBody LoginReq req, HttpServletRequest servletRequest) {
+    public LoginReq login2(@RequestBody LoginReq req, HttpServletRequest servletRequest) {
         System.out.println("---- login2 ----- userName = " + req.getUserName());
+
+        String user = JSONObject.toJSONString(req);
+        System.out.println("---- login2 ----- user = " + user);
+
+        System.out.println("---- login2 -----  birthday = " + req.getBirthday());
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+        Date date = null;
+        try {
+            date = simpleDateFormat.parse(simpleDateFormat.format(req.getBirthday()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("date = " + simpleDateFormat.format(date));
+
+        req.setBirthday(new Date());
 
         // 获取 cookie
         Cookie[] cookies = servletRequest.getCookies();
@@ -136,7 +183,9 @@ public class RestFulController {
         if (req.getUserName().isEmpty() || req.getPwd().isEmpty()) {
             throw new RuntimeException("userName or pwd is empty");
         }
-        return new LoginResp("success", 200);
+//        return new LoginResp("success", 200);
+
+        return req;
     }
 
     // http://localhost:8180/demo_war_exploded/getUserInfo
@@ -148,6 +197,8 @@ public class RestFulController {
         session.setMaxInactiveInterval(10); // 设置失效时间为 10s
 
         session.setAttribute("secret", "i love u");
+
+        dataService.showMsg("哈哈哈哈");
 
         // 获取用户的请求参数
         Map<String, String[]> map = servletRequest.getParameterMap();
@@ -178,6 +229,7 @@ public class RestFulController {
         response.addCookie(cookie1);
 
         System.out.println("---- getUserInfo ----- userId = " + userId + " , url = " + url);
+        System.out.println("------------- " + passWord);
         if (userId.isEmpty()) {
             throw new RuntimeException("userId is empty");
         }
