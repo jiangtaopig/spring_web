@@ -700,10 +700,7 @@ public class TestMy {
 
         System.out.println("maxScoreUser = " + maxScoreUser.get());
     }
-
-    public void hha() {
-
-    }
+    
 
 
     /**
