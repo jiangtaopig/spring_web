@@ -701,8 +701,6 @@ public class TestMy {
         System.out.println("maxScoreUser = " + maxScoreUser.get());
     }
     
-
-
     /**
      * 测试等3个任务都完成了再执行其他逻辑
      */
