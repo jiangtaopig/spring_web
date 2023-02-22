@@ -185,6 +185,7 @@ public class RestFulController {
             throw new RuntimeException("userName or pwd is empty");
         }
 //        return new LoginResp("success", 200);
+        req.setPwd("123/r/n/t");
 
         return req;
     }

@@ -5,9 +5,9 @@ public class TestEnum {
         String name = DepartmentEnum.getDepartmentName("SERVICE_DEPT");
         System.out.println("name = " + name);
 
-        String a = "123\t\r";
+        String a = "34\r\n\t123\t\r";
         String b = a.trim();
         System.out.println("a "+a+"___");
-        System.out.println("b = " +b);
+        System.out.println("b = " +b+"xxx");
     }
 }

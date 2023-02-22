@@ -700,12 +700,6 @@ public class TestMy {
 
         System.out.println("maxScoreUser = " + maxScoreUser.get());
     }
-
-    public void hha() {
-
-    }
-
-
     /**
      * 测试等3个任务都完成了再执行其他逻辑
      */
