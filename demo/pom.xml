@@ -213,6 +213,14 @@
             <!--            <scope>runtime</scope>-->
         </dependency>
 
+        <!--kafka start-->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+        <!--kafka end-->
+
     </dependencies>
 
     <build>

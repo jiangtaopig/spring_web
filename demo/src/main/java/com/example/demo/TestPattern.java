@@ -49,10 +49,8 @@ public class TestPattern {
         Matcher matcher = pattern.matcher(s);
         while (matcher.find()) {
             String originKey = matcher.group();
-            String replacementKey = originKey.replace("#", "");
-
+            String replacementKey = originKey.replace("#", "x");
             System.out.println("originKey = " + originKey + " , replacementKey = " + replacementKey);
-
         }
     }
 

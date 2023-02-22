@@ -4,11 +4,15 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.kafka.common.protocol.types.Field;
 import org.junit.Test;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class TestJson1 {
 
@@ -55,13 +59,100 @@ public class TestJson1 {
 
     }
 
+    @Test
+    public void test3() {
+
+        Random random = new Random();
+        int seed = random.nextInt(4); // 0 到 4 的随机数
+
+        System.out.println("----seed = " + seed);
+
+        Double a = Double.valueOf(1);
+        BigDecimal bb = BigDecimal.valueOf(a);
+
+        Map map = new HashMap();
+        map.put("x", null);
+        Integer v = (Integer) map.getOrDefault("x", 0);
+
+        Object object = null;
+        Map map1 = (Map) object;
+        System.out.println("map1 = " + map1);
+
+        System.out.println("v ===" + v);
+        String str = StrConstant.jsonStr;
+        String res = handlerSpecialDefinedCoupon(str);
+        System.out.println("res ====> " + res);
+
+    }
+
+    @Test
+    public void tess() {
+        boolean aiCheck = aiCheck();
+        System.out.println("aiCheck ==== >" + aiCheck);
+    }
+
+    private boolean aiCheck() {
+        String s = StrConstant.imageJson;
+        Map map = JSONObject.parseObject(s);
+
+        Map uploadImageInfos = (Map) map.get("uploadImageInfos");
+        Set<Map.Entry> set = uploadImageInfos.entrySet();
+        for (Map.Entry entry : set) {
+            List<Map> value = (List<Map>) entry.getValue();
+            if (value != null) {
+                for (Map map1 : value) {
+                    String authenticity = (String) map1.get("authenticity");
+                    System.out.println("authenticity >>> " + authenticity);
+                    if ("N".equals(authenticity) || "2".equals(authenticity)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+
+    private String handlerSpecialDefinedCoupon(String jsonContent) {
+        String deductCountStr = "{\n" +
+                "\t\"params\": [{\n" +
+                "\n" +
+                "\t\t},\n" +
+                "\t\t{\n" +
+                "\t\t\t\"value\": \"\",\n" +
+                "\t\t\t\"key\": \"couponSelected.#couponNo#.verificationCashAmount\"\n" +
+                "\t\t}\n" +
+                "\t],\n" +
+                "\t\"viewAttr\": {\n" +
+                "\t\t\"hintText\": \"1次为1元，请填写1元的倍数进行核销\",\n" +
+                "\t\t\"keyboardType\": \"number\",\n" +
+                "\t\t\"type\": \"text_field\",\n" +
+                "\t\t\"title\": \"扣减次数\"\n" +
+                "\t}\n" +
+                "}";
+
+        JSONObject deductCountJson = JSONObject.parseObject(deductCountStr);
+        JSONObject templateJson = JSONObject.parseObject(jsonContent);
+        if (templateJson != null && templateJson.containsKey("content")) {
+            JSONArray jsonArray = templateJson.getJSONArray("content");
+            for (int i = 0; i < jsonArray.size(); i++) {
+                JSONObject item = (JSONObject) jsonArray.get(i);
+                JSONObject attr = item.getJSONObject("viewAttr");
+                if ("扣减次数".equals(attr.getString("title"))) {
+                    jsonArray.set(i, deductCountJson);
+                }
+            }
+        }
+        jsonContent = JSONObject.toJSONString(templateJson);
+        return jsonContent;
+    }
 
     @Test
     public void testMain2() {
 
         String aa = "com.insaic.base.exception.BusinessException: 报表暂最多支持导出0万条数据！";
 
-        aa = aa.substring(aa.indexOf(":")+1);
+        aa = aa.substring(aa.indexOf(":") + 1);
 
         System.out.println("======aa ======" + aa);
 
@@ -94,7 +185,7 @@ public class TestJson1 {
             couponMo.code = codeEntry.code;
             couponMo.name = codeEntry.name;
 
-           List<CouponMo> couponMos = codeEntryList1.stream()
+            List<CouponMo> couponMos = codeEntryList1.stream()
                     .filter(codeEntry1 -> {
                         return codeEntry1.property1.equals(codeEntry.code);
                     }).map(codeEntry1 -> {
@@ -112,7 +203,6 @@ public class TestJson1 {
         System.out.println("couponJson =   " + couponJson);
 
 
-
         codeEntryList.stream().forEach(codeEntry -> {
             List<CodeEntry> tmp = codeEntryList1.stream()
                     .filter(codeEntry1 -> {
@@ -125,6 +215,23 @@ public class TestJson1 {
         });
 
         System.out.println("list = " + list);
+    }
+
+    @Test
+    public void test5() {
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("name", "pig");
+        map.put("age", 23);
+
+        String s = JSONObject.toJSONString(map);
+        System.out.println("s = " + s);
+
+        String ss = "zhujt,aa,bb,";
+        String[] sss = ss.split(",");
+        Arrays.stream(sss).forEach(ssss -> {
+            System.out.println(ssss);
+        });
     }
 
     @Data

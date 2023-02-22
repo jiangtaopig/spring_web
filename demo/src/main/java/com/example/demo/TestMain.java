@@ -13,6 +13,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class TestMain<content> {
     public static void main(String[] args) throws ParseException {
@@ -21,11 +23,13 @@ public class TestMain<content> {
 
         System.out.println("---" + PushType.MSG_STORE_REMIND.getValue()+", code = " + PushType.MSG_STORE_REMIND.name());
 
-        if ("MSG_STORE_REMIND".equals(PushType.MSG_STORE_REMIND.name())) {
-            System.out.println("---------------");
+        if ("MSG_STORE_REMIND".equals(PushType.MSG_STORE_REMIND.toString())) {
+            System.out.println("------- eqaul--------");
         } else {
             System.out.println("xxxxxxxxxxxx");
         }
+
+
 
 
         List<String> stringList = Collections.singletonList(PushType.MSG_STORE_REMIND.name());
@@ -436,7 +440,15 @@ public class TestMain<content> {
 
 
 
+    @Test
+    public void testListContain() {
+        List<String> s1 = Stream.of("a", "d", "c", "b", "e").collect(Collectors.toList());
+        List<String> s2 = new ArrayList<>();//Stream.of("e", "c", "a").collect(Collectors.toList());
+
+        boolean flag = s1.containsAll(s2);
+        System.out.println("flag >>> " + flag);
+    }
 
 
-//
+
 }

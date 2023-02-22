@@ -1,10 +1,7 @@
 package com.example.demo;
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.demo.entity.LoginReq;
-import com.example.demo.entity.LoginResp;
-import com.example.demo.entity.UserInfo;
-import com.example.demo.entity.ZjtLoginReq;
+import com.example.demo.entity.*;
 import com.example.demo.service.IDataService;
 import org.jetbrains.annotations.Range;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +24,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ExecutionException;
 
 
 // @RestController:该类下所有方法不走视图解析器，返回一个json数据
@@ -47,6 +45,9 @@ public class RestFulController {
 
     @Value("${passWord}")
     String passWord;
+
+    @Autowired
+    RestFulHandler restFulHandler;
 
     /**
      * http://localhost:8180/demo_war_exploded/add?a=3&b=4
@@ -258,6 +259,34 @@ public class RestFulController {
         // 返回一个 jsp
         return "zjtLoginResp";
     }
+
+
+
+
+    @PostMapping(value = "testCompletableFuture")
+    @ResponseBody
+    public TestCompletableRes testCompletableFuture(@RequestBody TestCompletableReq requestBody) {
+        TestMy.UserInfo2 userInfo2 = null;
+        long start = System.currentTimeMillis();
+        try {
+            userInfo2 = restFulHandler.getUserInfo();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        long end = System.currentTimeMillis();
+        TestCompletableRes res = new TestCompletableRes();
+        res.setCostTime((end-start)+" 毫秒");
+        if (userInfo2 != null) {
+            String userInfoStr = JSONObject.toJSONString(userInfo2);
+            res.setResult(userInfoStr);
+        } else {
+            res.setResult("userInfo2 is null");
+        }
+        return res;
+    }
+
+
+
 
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
