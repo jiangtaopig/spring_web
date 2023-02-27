@@ -1,5 +1,9 @@
 package com.example.demo;
 
+import com.alibaba.fastjson.JSONException;
+import com.alibaba.fastjson.JSONObject;
+import org.junit.Test;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -104,6 +108,51 @@ public class HttpPost {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    @Test
+    public void testPost() {
+        sendErrMsg("测试错误2");
+    }
+
+    private void sendErrMsg(String msg){
+        System.out.println(msg);
+        try {
+            URL url = new URL("http://dimappsit.insaic.com:8050/dim-app/app/business/appErrSave");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+            connection.setRequestMethod("POST");
+            //连接超时
+            connection.setConnectTimeout(8000);
+            connection.setReadTimeout(8000);
+            connection.setDoOutput(true);
+            //连接打开输出流
+            DataOutputStream out = new DataOutputStream(connection.getOutputStream());;
+
+            JSONObject json = new JSONObject();
+            json.put("errMsg", msg);
+            json.put("taskId", "016");
+            // 解决入参为中文导致的 400 , 下面的 writeBytes 就会导致400
+//            out.writeBytes(json.toJSONString());
+            out.write(json.toJSONString().getBytes("utf-8"));
+            System.out.println("code = " + connection.getResponseCode());
+            if (connection.getResponseCode() == 200) {
+                //接收服务器输入流信息
+                InputStream is = connection.getInputStream();
+                BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                //拿到信息
+                String  result = br.readLine();
+                System.out.println("result >>> " + result);
+                is.close();
+                out.close();
+                connection.disconnect();
+            } else{
+                out.close();
+                connection.disconnect();
+            }
+        } catch (IOException | JSONException ioException) {
+            ioException.printStackTrace();
         }
     }
 
