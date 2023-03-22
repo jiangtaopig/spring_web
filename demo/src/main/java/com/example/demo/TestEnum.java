@@ -22,6 +22,7 @@ public class TestEnum {
 
         String json = JSONObject.toJSONString(aa);
 
+
         System.out.println("json >>> : "+ json);
 
     }

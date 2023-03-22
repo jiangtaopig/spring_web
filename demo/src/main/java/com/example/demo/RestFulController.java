@@ -49,6 +49,9 @@ public class RestFulController {
     @Autowired
     RestFulHandler restFulHandler;
 
+
+    private final static String SESSION_KEY1 = "code1";
+
     /**
      * http://localhost:8180/demo_war_exploded/add?a=3&b=4
      */
@@ -100,11 +103,19 @@ public class RestFulController {
     @ResponseBody
     public LoginResp login(@RequestParam(value = "userName") String userName, @RequestParam(value = "pwd") String pwd, HttpServletRequest servletRequest) {
         System.out.println("---- login ----- userName = " + userName + " , path = " + servletRequest.getContextPath());
+
+
         // 我在 getUserInfo 中设置了 session
         HttpSession session = servletRequest.getSession();
         // 由于在 getUserInfo 中设置了最大周期为10s， 所以10s后就获取不到 secret 了
         // session 的周期指的是不活动时间，比如我们设置10s，那么10s 内没有访问session，session 中属性失效，
         // 如果在9s的时候访问了 session 则重新计时10s.
+
+        session.setAttribute(SESSION_KEY1, "login 是 post 请求");
+        String sessionId = session.getId();
+
+        System.out.println("login >>>>>>>>> sessionId = " + sessionId);
+        System.out.println("login >>>>>>>>> servletRequest = " + servletRequest+" , url = " +servletRequest.getRequestURL().toString());
 
         String secret = (String) session.getAttribute("secret");
         long time = session.getCreationTime();
@@ -151,6 +162,9 @@ public class RestFulController {
     public LoginReq login2(@RequestBody LoginReq req, HttpServletRequest servletRequest) {
         System.out.println("---- login2 ----- userName = " + req.getUserName());
 
+        String accessToken = servletRequest.getParameter("accessToken");
+        System.out.println("---- login2 --------------- accessToken = " + accessToken);
+
         String user = JSONObject.toJSONString(req);
         System.out.println("---- login2 ----- user = " + user);
 
@@ -185,8 +199,6 @@ public class RestFulController {
             throw new RuntimeException("userName or pwd is empty");
         }
 //        return new LoginResp("success", 200);
-        req.setPwd("123/r/n/t");
-
         return req;
     }
 
@@ -196,9 +208,20 @@ public class RestFulController {
     public UserInfo getUserInfo(@RequestParam(value = "userId") String userId, HttpServletRequest servletRequest, HttpServletResponse response) {
         String url = servletRequest.getRequestURL().toString();
         HttpSession session = servletRequest.getSession();
-        session.setMaxInactiveInterval(10); // 设置失效时间为 10s
+        session.setMaxInactiveInterval(100); // 设置失效时间为 10s
+
+        String code1 = (String) session.getAttribute(SESSION_KEY1);
+        String sessionId = session.getId();
+
+        System.out.println("getUserInfo >>>>>>>>> servletRequest = " + servletRequest+" , url = " +servletRequest.getRequestURL().toString());
+        System.out.println("getUserInfo >>>>>>>>>> code1 = " + code1 + " , sessionId = " + sessionId);
+
 
         session.setAttribute("secret", "i love u");
+
+        String accessToken = servletRequest.getParameter("accessToken");
+
+        System.out.println("------------------- accessToken = " + accessToken + " , secret = " + session.getAttribute("secret"));
 
         dataService.showMsg("哈哈哈哈");
 

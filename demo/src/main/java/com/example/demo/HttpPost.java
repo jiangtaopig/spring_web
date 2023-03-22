@@ -113,7 +113,7 @@ public class HttpPost {
 
     @Test
     public void testPost() {
-        sendErrMsg("测试错误2");
+        sendErrMsg("测试错误2zhu");
     }
 
     private void sendErrMsg(String msg){
@@ -145,12 +145,9 @@ public class HttpPost {
                 String  result = br.readLine();
                 System.out.println("result >>> " + result);
                 is.close();
-                out.close();
-                connection.disconnect();
-            } else{
-                out.close();
-                connection.disconnect();
             }
+            out.close();
+            connection.disconnect();
         } catch (IOException | JSONException ioException) {
             ioException.printStackTrace();
         }

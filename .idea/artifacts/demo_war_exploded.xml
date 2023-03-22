@@ -58,7 +58,7 @@
           <element id="library" level="project" name="Maven: com.mchange:mchange-commons-java:0.2.11" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.5" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:2.0.2" />
-          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.24" />
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.26" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.11.0" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.11.0" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.11.0" />
@@ -103,7 +103,7 @@
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.1" />
           <element id="library" level="project" name="Maven: org.springframework:spring-test:5.2.0.RELEASE" />
           <element id="library" level="project" name="Maven: joda-time:joda-time:2.9.4" />
-          <element id="library" level="project" name="Maven: org.jetbrains:annotations:23.1.0" />
+          <element id="library" level="project" name="Maven: org.jetbrains:annotations:24.0.0" />
           <element id="library" level="project" name="Maven: com.vivo:vpush-server-sdk:2.3" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.6.9" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.9.6" />

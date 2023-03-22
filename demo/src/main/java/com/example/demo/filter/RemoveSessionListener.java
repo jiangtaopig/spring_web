@@ -28,7 +28,7 @@ public class RemoveSessionListener implements ServletContextListener, HttpSessio
         logger.info("------- 容器被创建啦 ---------");
         // 创建一个定时任务去看看 session 是否超过指定时间
         timer = new Timer();
-        timer.schedule(new MyTask(sessionList, lock), 0, 10 * 1000);
+//        timer.schedule(new MyTask(sessionList, lock), 0, 10 * 1000);
     }
 
     @Override

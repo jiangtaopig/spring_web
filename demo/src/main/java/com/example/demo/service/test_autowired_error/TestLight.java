@@ -9,7 +9,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration("classpath:demo_sacn.xml")
+@ContextConfiguration("classpath:demo_scan.xml")
 public class TestLight {
 
     @Autowired
