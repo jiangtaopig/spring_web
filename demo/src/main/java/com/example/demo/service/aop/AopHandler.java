@@ -43,4 +43,9 @@ public class AopHandler {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void test3() {
+        electricService.testParamCheck("xxx");
+    }
 }

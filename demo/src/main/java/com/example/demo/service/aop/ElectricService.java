@@ -26,6 +26,12 @@ public class ElectricService {
         electricService.pay();
     }
 
+
+    @CheckRequiredParam(requireParam = "name")
+    public void testParamCheck(String name) {
+        System.out.println("name = " + name);
+    }
+
     /**
      * 假设这个 付费是支付宝支付，由于是第3方的服务，
      * 我们需要记录下接口调用时间。这时候我们就引入了一个 @Around 的增强 ，
