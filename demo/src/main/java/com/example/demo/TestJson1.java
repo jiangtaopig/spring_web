@@ -89,6 +89,9 @@ public class TestJson1 {
     public void tess() {
         boolean aiCheck = aiCheck();
         System.out.println("aiCheck ==== >" + aiCheck);
+
+        Map<String, String> map = new HashMap<>();
+
     }
 
     private boolean aiCheck() {

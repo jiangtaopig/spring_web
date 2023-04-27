@@ -123,7 +123,7 @@ public class TestStream {
         List<Course> zhanshanCourse = Arrays.asList(new Course("语文"), new Course("数学"));
         zhanshan.setCourses(zhanshanCourse);
 
-        MyStudent lisi = new MyStudent("张三", 30);
+        MyStudent lisi = new MyStudent("李四", 30);
         List<Course> lisiCourse = Arrays.asList(new Course("语文"), new Course("数学"), new Course("英语"), new Course("计算机"));
         lisi.setCourses(lisiCourse);
 
@@ -133,6 +133,17 @@ public class TestStream {
         wanwu.setCourses(wanwuCourse);
 
         List<MyStudent> myStudentList = Arrays.asList(zhanshan, lisi, wanwu);
+
+        myStudentList = myStudentList.stream().sorted(new Comparator<MyStudent>() {
+            @Override
+            public int compare(MyStudent o1, MyStudent o2) {
+                return o2.age - o1.age;
+            }
+        }).collect(Collectors.toList());
+
+
+
+
 
         /** 求所有学生的年龄之和 */
         Integer sumAge = myStudentList.stream().collect(Collectors.summingInt(MyStudent::getAge));

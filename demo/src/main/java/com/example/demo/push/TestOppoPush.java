@@ -41,7 +41,6 @@ public class TestOppoPush {
             // 创建通知栏消息体
             MBAppPushMessageEO messageEO = CommonPushUtil.createMessage(businessType, "android");
             Notification notification = mGetNotification(messageEO);
-            //Notification notification = mGetNotification(buildMessageEo());
             // 创建发送对象
             Target target = Target.build(deviceId);
             // 发送单推消息
