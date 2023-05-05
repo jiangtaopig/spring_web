@@ -18,8 +18,6 @@ public class TestOppoPush {
     private static String appSecret = "46e58bd3f430470495e82d41e688f2fe";
     private static String masterSecret = "20f7da9377a54c88844ffc157d22dd0d";
 
-    private static String packageName = "com.yingke.dimapp";
-    private static String appName = "dimapp";
     private static Boolean soundFlag = true;
     private static String deviceId = "OPPO_CN_cbed9338cdf62308d8769ca7c354592d";
 
