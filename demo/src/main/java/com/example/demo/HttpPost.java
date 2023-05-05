@@ -20,8 +20,7 @@ public class HttpPost {
         // 阿里云的合格证验证
         String url = "https://vehiclec.market.alicloudapi.com/s/api/ocr/vehicleCertificate";
         Map<String, Object> params = new HashMap<>();
-        params.put("imgUrl",
-                "https://insaic-ocr-test.oss-cn-shanghai-finance-1-pub.aliyuncs.com/ocr/aliyun/2022/11/16/XFile1668582907041863.jpg?Expires=1668586509&OSSAccessKeyId=STS.NUTKyUmBYJ6TgZCu9t5th7cYb&Signature=rIyRET2JIu8FhrF2xRBXq%2Bc0T0g%3D&security-token=CAISjgJ1q6Ft5B2yfSjIr5bhAMPhgJ14%2FfS%2FZXzykTkhOftE2KbygDz2IHpIe3FhBO8dtPUymWBY6%2FkclrBzWpVfRECBatBrq51M6h6kbs%2Fatteu7LsC0Etk9%2Fw8U0yV5tTbRsmkZvG%2FE67fRjKpvyt3xqSABlfGdle5MJqPpId6Z9AMJGeRZiZHA9EkTWkL6rVtVx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDugXi3zn%2BCk7JN%2Fdmgfcj8Mpc3ZM8lCO3YhrImKvDztwdL8AVP%2BatMi6hJxCzKpNn1ASMKuUnZa7uJrYY1fVIkNvhnRPBe0v%2Fnjrh5vPfalo%2ByzB1XeP1YSDiaXp%2Bwb2dr8yYSi7wagAFZiygMA3Xvjs1nmNNkF4iMeuu0rQPD8fE49Yc%2Bu0zGuy9%2Bm9hvWuGRMBmS0vMAeR7PXqUS4sfJ%2Ftc3MBibuKKaSoeHn1iSPDvK6Eb9LVrEb0Dx5EhqPrfKv%2FHQBGc2db9pWRpbWDsViWv%2F5CDmKMgN4PmAdjtfb%2FvnbchtLdmC1w%3D%3D"
+        params.put("imgUrl",""
         );
 
         doPost(url, params);
@@ -119,7 +118,7 @@ public class HttpPost {
     private void sendErrMsg(String msg){
         System.out.println(msg);
         try {
-            URL url = new URL("http://dimappsit.insaic.com:8050/dim-app/app/business/appErrSave");
+            URL url = new URL("http://dimappsit.insvvaic.com:8050/dim-vvapp/app/business/appErrSave");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             connection.setRequestMethod("POST");

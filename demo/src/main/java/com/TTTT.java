@@ -163,7 +163,7 @@ public class TTTT {
     @Test
     public void testUrl() {
 
-        String url = _getCommonReportUrl("https://mdssit.insaic.com:22443/hybird/#/charts/coupon/hexiao?{userCode:enUserCode}");
+
 
     }
 

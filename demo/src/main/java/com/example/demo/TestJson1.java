@@ -153,11 +153,8 @@ public class TestJson1 {
     @Test
     public void testMain2() {
 
-        String aa = "com.insaic.base.exception.BusinessException: 报表暂最多支持导出0万条数据！";
 
-        aa = aa.substring(aa.indexOf(":") + 1);
 
-        System.out.println("======aa ======" + aa);
 
         String jsonArrayStr = "[{\n" + " \"entryId\": 509832,\n" + " \"category\": \"ECS_SETTLE_APPROVAL_VOUCHERS_CATEGORY\",\n" + " \"code\": \"DEDUCTIBLE_RETURN\",\n" + " \"name\": \"返厂无忧\",\n" + " \"updateTime\": 1616483772000,\n" + " \"sort\": 1\n" + "}, {\n" + " \"entryId\": 509835,\n" + " \"category\": \"ECS_SETTLE_APPROVAL_VOUCHERS_CATEGORY\",\n" + " \"code\": \"OTHERS\",\n" + " \"name\": \"其他\",\n" + " \"updateTime\": 1616483772000,\n" + " \"sort\": 4\n" + "}, {\n" + " \"entryId\": 509833,\n" + " \"category\": \"ECS_SETTLE_APPROVAL_VOUCHERS_CATEGORY\",\n" + " \"code\": \"SGM\",\n" + " \"name\": \"SGM产品\",\n" + " \"updateTime\": 1616483772000,\n" + " \"sort\": 2\n" + "}, {\n" + " \"entryId\": 509834,\n" + " \"category\": \"ECS_SETTLE_APPROVAL_VOUCHERS_CATEGORY\",\n" + " \"code\": \"TYRE\",\n" + " \"name\": \"轮胎\",\n" + " \"updateTime\": 1616483772000,\n" + " \"sort\": 3\n" + "}]";
 

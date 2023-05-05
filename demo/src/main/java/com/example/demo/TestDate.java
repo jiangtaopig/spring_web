@@ -119,79 +119,7 @@ public class TestDate {
             System.out.println(e);
         }
 
-        String url = "https://mdssit.insaic.com:22443/hybird#/charts/warranty?ac=ICQQQD12ID&{userCode:enUserCode}";
-        String a = _getCommonReportUrl(url);
-        System.out.println(" a = " + a);
-
-        AtomicInteger atomicInteger = new AtomicInteger(1);
-        atomicInteger.addAndGet(2);
-
-        String imageUrl = "https://yk-ecs-test.oss-cn-shanghai-finance-1-pub.aliyuncs.com/ecs/export/writeoff/2023/03/21/BK20370/XFile1679365541756554.jpg?Expires=1679368268&OSSAccessKeyId=STS.NTn5MzxFuF3zWgt9mZXX22Af3&Signature=4GHF%2F2MFDRs5mZZC00PgfKJHHU4%3D&security-token=CAISigJ1q6Ft5B2yfSjIr5fbfvfOlZlU8fGRVUHF3W0PVNce3YTN0Tz2IHpIfHVrCeEZv%2FQ2nGtZ6%2FYdlrBzWpVfRECBatBrq51M6h6kbs%2Fatteu7LsC0DgM95ILU0yV5tTbRsmkZvG%2FE67fRjKpvyt3xqSABlfGdle5MJqPpId6Z9AMJGeRZiZHA9EkTWkL6rVtVx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDugXi3zn%2BCk7JN%2Fdmgfcj8Mpc3ZM8lCO3YhrImKvDztwdL8AVP%2BatMi6hJxCzKpNn1ASMKuUneb7GEo4I%2BfFYhPflnS%2FFe1v%2FnjrhpuanenJ%2By1xtWIaRPTDRw6C9LBXB5chqAASne9cVJDgVh4yCc7lXix6QbPvGtRqTGDtbUegUFVpqwDpb42SJZgzZr2Z2JOEIRMNTC6BG20eby4CWfGj%2FMLoQGFWB36s1bq%2Be7NXBT169GTxqHj8Ejnvz2s%2BlgL4Fikts4n8z6qudlpZbWijKIgQmvWPBoYRHVD7FolDBqw3va";
-
-        String imageUrl2 = imageUrl;
-
-        if (!imageUrl.startsWith("ecs/export")) {
-            int startIndex = imageUrl.indexOf("ecs/export");
-            imageUrl = imageUrl.substring(startIndex, imageUrl.indexOf("?", startIndex));
-             // 在进入第二步的时候，由于该图片是暂存的，可能没有AI标识，所以调用 ai 校验，但是url是拼接后的，有问题，要截取。
-        }
-        System.out.println("imageUrl >>>"+imageUrl);
-
-        String urlPath = getOssUrlPath(imageUrl2);
-        System.out.println("urlPath = "+urlPath);
     }
-
-
-
-    public String getOssUrlPath(String ossFullUrl){
-//        String ossFullurl = "https://insaic-app-test.oss-cn-shanghai-finance-1-pub.aliyuncs.com/app/sop/2021/12/1.jpg?Expires=1642576689&OSSAccessKeyId=STS.NU5Xub8YkmdtxBBYa4foHvKcL&Signature=jHkDEHLD3WxptgOS%2FqCWHeyahN8%3D&security-token=CAISjgJ1q6Ft5B2yfSjIr5aAE8%2FW1YZK2qafemTzvWFhauBkmY7Irjz2IHFMf3FsBe8bs%2Fo3mm1R6%2FYelrBzWpVfRECBatBrq51M6h6kbs%2Fatteu7LsC0GsEo4kcTEyV5tTbRsmkZvG%2FE67fRjKpvyt3xqSABlfGdle5MJqPpId6Z9AMJGeRZiZHA9EkTWkL6rVtVx3rOO2qLwThj0fJEUNsoXAcs25k7rmlycDugXi3zn%2BCk7JN%2Fdmgfcj8Mpc3ZM8lCO3YhrImKvDztwdL8AVP%2BatMi6hJxCzKpNn1ASMKsk3da7aIrYAyclcnO%2FFnS%2FJe0v%2Fnjrh5vPfalo%2Bywg5VeP1YSDiaXoewb2dr8yYSi7wagAFS%2Fg67UjmV61FP%2Bj%2BJbY1qRX6Z%2BCqyt0UD3TYyEMggAgif2O1bZ0mIUdBKXDGB0fLDMjgOrn0adpuKlxrrtdMxq6tjqcZEuKfnJsiJa35EBwg7OylJfch%2BY7Tgy9F3tDu0xrEUvnK84LRz2fNdxVCOgKzFOcv%2Bxmz2YS0TGxO3GQ%3D%3D";
-        if(ossFullUrl != null){
-            try{
-                URL url = new URL(ossFullUrl);
-                String path = url.getPath();
-                String query = url.getQuery();
-                //转换后：ecs/export/writeoff/VW01240/20200407/5672090a9a3af5968bde4866fc002740.jpg
-                return path.substring(1);
-            }catch (Exception e){
-                //logger.error("ossFullurl is invalid!");
-                //上传图片地址非URL时原地址返回
-                return ossFullUrl;
-            }
-        }
-        return ossFullUrl;
-    }
-
-
-    /**
-     * 生成报表url
-     * @param originUrl 例：https://mdssit.insaic.com:22443/hybird#/charts/warranty?{userCode:enUserCode}
-     * @return
-     */
-    public  String _getCommonReportUrl(String originUrl) {
-        String reportUrl = originUrl;
-        int startIndex = originUrl.indexOf("{");
-        int endIndex = originUrl.indexOf("}");
-        if (startIndex > -1 && endIndex > -1) {
-            String domainUrl = originUrl.substring(0, startIndex);
-            String paramStr = originUrl.substring(startIndex+1, endIndex);
-            String[] params = paramStr.split(",");
-            String queryParams = "";
-            for (String paramCondition : params) {
-                String[] conditionP  = paramCondition.split(":");
-                String key = conditionP[0];
-                String valueKey = conditionP[1];
-                String value =  "1234";///_getReportParamValueByKey(valueKey, appCode);
-                if (StringUtils.isEmpty(queryParams)) {
-                    queryParams = String.format("%s=%s", key, value);
-                } else {
-                    queryParams = queryParams.concat(String.format("&%s=%s", key, value));
-                }
-            }
-            reportUrl = domainUrl.concat(queryParams);
-        }
-        return reportUrl;
-    }
-
 
     public static Date getMonthBegin() {
         Calendar c = Calendar.getInstance();

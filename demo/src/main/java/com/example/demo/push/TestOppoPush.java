@@ -70,9 +70,9 @@ public class TestOppoPush {
         notification.setAppMessageId(UUID.randomUUID().toString());
 
         // 应用接收消息到达回执的回调URL，字数限制200以内，中英文均以一个计算
-        notification.setCallBackUrl("https://dimapp.insaic.com:18443/dim-app/msgcallback/oppo");
+        notification.setCallBackUrl("https://xxx/msgcallback/oppo");
         // App开发者自定义回执参数，字数限制50以内，中英文均以一个计算
-        notification.setCallBackParameter("insaicOppo888");
+        notification.setCallBackParameter("xxxOppo888");
 
         // 点击动作类型0，启动应用；1，打开应用内页（activity的intent action）；2，打开网页；4，打开应用内页（activity）；【非必填，默认值为0】;5,Intent scheme URL
         notification.setClickActionType(0);
@@ -100,7 +100,7 @@ public class TestOppoPush {
         if (soundFlag) {
             notification.setChannelId("sound_oppo");
         }
-        notification.setCallBackUrl("https://dimapp.insaic.com:18443/dim-app/msgcallback/oppo");
+        notification.setCallBackUrl("https://xxx:18443/dim-app/msgcallback/oppo");
         return notification;
     }
 

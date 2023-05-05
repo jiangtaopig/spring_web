@@ -472,7 +472,7 @@ public class StrConstant {
                "\t\"code\": \"001086_ZSBY_001_lingshou\",\n" +
                "\t\"name\": \"车辆维修保养券（零售）\",\n" +
                "\t\"property1\": \"OTHERS\",\n" +
-               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,onlyInsaicSendCoupon,\",\n" +
+               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,,\",\n" +
                "\t\"property3\": \"SVW\",\n" +
                "\t\"updateTime\": 1667891303000\n" +
                "}, {\n" +
@@ -517,7 +517,7 @@ public class StrConstant {
                "\t\"code\": \"001086_ZSBY_004_lingshou\",\n" +
                "\t\"name\": \"车辆维修保养券（零售）\",\n" +
                "\t\"property1\": \"OTHERS\",\n" +
-               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,onlyInsaicSendCoupon,\",\n" +
+               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,=,\",\n" +
                "\t\"property3\": \"SVW\",\n" +
                "\t\"updateTime\": 1667891303000\n" +
                "}, {\n" +
@@ -544,7 +544,7 @@ public class StrConstant {
                "\t\"code\": \"001086_ZSBY_006_lingshou\",\n" +
                "\t\"name\": \"车辆维修保养券（零售）\",\n" +
                "\t\"property1\": \"OTHERS\",\n" +
-               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,onlyInsaicSendCoupon,\",\n" +
+               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,,\",\n" +
                "\t\"property3\": \"SVW\",\n" +
                "\t\"updateTime\": 1667891303000\n" +
                "}, {\n" +
@@ -571,7 +571,7 @@ public class StrConstant {
                "\t\"code\": \"001086_ZSBY_008_lingshou\",\n" +
                "\t\"name\": \"车辆维修保养券（零售）\",\n" +
                "\t\"property1\": \"OTHERS\",\n" +
-               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,onlyInsaicSendCoupon,\",\n" +
+               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,,\",\n" +
                "\t\"property3\": \"SVW\",\n" +
                "\t\"updateTime\": 1667891303000\n" +
                "}, {\n" +
@@ -643,7 +643,7 @@ public class StrConstant {
                "\t\"code\": \"001086_ZSBY_016\",\n" +
                "\t\"name\": \"终身保养服务包 - 途昂2.5T\",\n" +
                "\t\"property1\": \"OTHERS\",\n" +
-               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,onlyInsaicSendCoupon,\",\n" +
+               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,,\",\n" +
                "\t\"property3\": \"SVW\",\n" +
                "\t\"updateTime\": 1667891303000\n" +
                "}, {\n" +
@@ -652,7 +652,7 @@ public class StrConstant {
                "\t\"code\": \"001086_ZSBY_017\",\n" +
                "\t\"name\": \"终身保养服务包 - 途岳2.0T\",\n" +
                "\t\"property1\": \"OTHERS\",\n" +
-               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,onlyInsaicSendCoupon,\",\n" +
+               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,,\",\n" +
                "\t\"property3\": \"SVW\",\n" +
                "\t\"updateTime\": 1667891303000\n" +
                "}, {\n" +
@@ -661,7 +661,7 @@ public class StrConstant {
                "\t\"code\": \"001086_ZSBY_018\",\n" +
                "\t\"name\": \"终身保养服务包 - 途铠1.4T\",\n" +
                "\t\"property1\": \"OTHERS\",\n" +
-               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,onlyInsaicSendCoupon,\",\n" +
+               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,,\",\n" +
                "\t\"property3\": \"SVW\",\n" +
                "\t\"updateTime\": 1667891303000\n" +
                "}, {\n" +
@@ -670,7 +670,7 @@ public class StrConstant {
                "\t\"code\": \"001086_ZSZB_040_lingshou\",\n" +
                "\t\"name\": \"朗逸Plus 1.5L终身保养服务包（通兑）\",\n" +
                "\t\"property1\": \"OTHERS\",\n" +
-               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,onlyInsaicSendCoupon,\",\n" +
+               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,,\",\n" +
                "\t\"property3\": \"SVW\",\n" +
                "\t\"updateTime\": 1669342136000\n" +
                "}, {\n" +
@@ -679,7 +679,7 @@ public class StrConstant {
                "\t\"code\": \"001086_ZSZB_043_01\",\n" +
                "\t\"name\": \"帕萨特2.0T终身保养服务包（通兑）\",\n" +
                "\t\"property1\": \"OTHERS\",\n" +
-               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,onlyInsaicSendCoupon,\",\n" +
+               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,,\",\n" +
                "\t\"property3\": \"SVW\",\n" +
                "\t\"updateTime\": 1670378399000\n" +
                "}, {\n" +
@@ -1269,7 +1269,7 @@ public class StrConstant {
                "\t\"code\": \"SC20220017\",\n" +
                "\t\"name\": \"朗逸Plus 1.5L终身保养服务包（原店）\",\n" +
                "\t\"property1\": \"OTHERS\",\n" +
-               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,onlyInsaicSendCoupon,\",\n" +
+               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,,\",\n" +
                "\t\"property3\": \"SVW\",\n" +
                "\t\"updateTime\": 1667895147000\n" +
                "}, {\n" +
@@ -1278,7 +1278,7 @@ public class StrConstant {
                "\t\"code\": \"SC20220018\",\n" +
                "\t\"name\": \"朗逸Plus 1.4T终身保养服务包（原店）\",\n" +
                "\t\"property1\": \"OTHERS\",\n" +
-               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,onlyInsaicSendCoupon,\",\n" +
+               "\t\"property2\": \",writeoffCheck,,writeoffSendCoupon,,\",\n" +
                "\t\"property3\": \"SVW\",\n" +
                "\t\"updateTime\": 1667895147000\n" +
                "}, {\n" +

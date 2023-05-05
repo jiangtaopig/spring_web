@@ -12,14 +12,14 @@ public class CommonPushUtil {
         if("MSG_PUSH_TASK".equals(messageType)){
 
 
-            title = "【上汽保险】推修任务";
-            content = "【人保财险】 ,xxxx, 发生人伤类事故, 出险时间：2022-07-11 23:54:38, 出险地点：阿克苏市明珠路和幸福路交汇处, 客户xx ";
+            title = "推修任务";
+            content = " ,xxxx, 发生人伤类事故, 出险时间：2022-07-11 23:54:38, 出险地点：阿克苏市明珠路和幸福路交汇处, 客户xx ";
             businessType = "MSG_PUSH_TASK";
             businessNo = String.valueOf(20160027);
             messageId =  String.valueOf(232709983);
             businessData = "{\"licenseNo\":\"xxxx\",\"receiver\":\"pxq123456\",\"dealerCode\":\"VW00606\",\"label\":\"人伤\",\"insurerCode\":\"picc\"}";
 
-            /*title = "【上汽保险】推修任务";
+            /*title = "推修任务";
             content = "【太保财险】 ,吉A8BX99, 北京现代BH7181PAY轿车, 发生多车类事故, 出险时间：2022-08-23 07:05:32, 出险地点：阳光花园[九台-九台区], 客户万红梅";
             businessType = "MSG_PUSH_TASK";
             businessNo = String.valueOf(20854108);
@@ -28,7 +28,7 @@ public class CommonPushUtil {
 
 */
         }else if("MSG_NO_PUSH_TASK".equals(messageType)){
-            title = "【上汽保险】未推修线索";
+            title = "未推修线索";
             content = "您有一条未推修线索,【人保财险】 ,2021-09-10 15:57:16 车辆苏A8UIK0, 在上海市上海市闵行区龙茗路/漕宝路(路口)发生事故, 客户WWQ--,  请知悉! ";
             businessType = "MSG_NO_PUSH_TASK";
             //businessNo = String.valueOf(8080);
