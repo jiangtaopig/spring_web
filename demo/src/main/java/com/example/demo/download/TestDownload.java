@@ -14,8 +14,6 @@ public class TestDownload {
     @Test
     public void test() {
         //https://img1.baidu.com/it/u=3281726704,3757046501&fm=253&fmt=auto&app=138&f=JPEG?w=753&h=500
-        // https://files.insaic.com/app/apk/ydgjApp_pro_v3330105.apk
-        // ydgjApp_pro_v3330105.apk
         new DownLoadTask(
                 "https://img1.baidu.com/it/u=3281726704,3757046501&fm=253&fmt=auto&app=138&f=JPEG?w=753&h=500"
                 , 5, "aa.jpg").startDownload();
