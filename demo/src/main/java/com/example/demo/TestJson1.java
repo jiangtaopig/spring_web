@@ -91,10 +91,6 @@ public class TestJson1 {
         private List<CouponMo> children;
     }
 
-
-
-
-
     @Test
     public void test6() {
         String s = "{\n" +

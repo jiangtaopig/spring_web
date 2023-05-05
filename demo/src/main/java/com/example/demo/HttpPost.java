@@ -118,7 +118,7 @@ public class HttpPost {
     private void sendErrMsg(String msg){
         System.out.println(msg);
         try {
-            URL url = new URL("http://dimappsit.insvvaic.com:8050/dim-vvapp/app/business/appErrSave");
+            URL url = new URL("http://xxxx/app/business/appErrSave");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             connection.setRequestMethod("POST");
