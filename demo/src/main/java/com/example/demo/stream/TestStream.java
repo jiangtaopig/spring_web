@@ -474,7 +474,7 @@ public class TestStream {
         apple2.setWeight(2);
         apple2.setName("apple2");
 
-        // test sourceTree
+        // test sourceTree 2222
         int res = appleComparator.compare(apple1, apple2);
 
         System.out.println("res ==== "+res);
