@@ -19,7 +19,7 @@ public class TestOppoPush {
     private static String masterSecret = "20f7da9377a54c88844ffc157d22dd0d";
 
     private static Boolean soundFlag = true;
-    private static String deviceId = "OPPO_CN_cbed9338cdf62308d8769ca7c354592d";
+    private static String deviceId = "OPPO_CN_af467831a4be8b63b0a03817198fe2c5";
 
 
     public static void main(String[] args) {

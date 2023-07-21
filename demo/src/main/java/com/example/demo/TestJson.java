@@ -1,6 +1,9 @@
 package com.example.demo;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
 import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 
@@ -13,6 +16,18 @@ import java.util.regex.Pattern;
 
 public class TestJson {
 
+
+    @Test
+    public void test1() {
+        String s = "123";
+        String s1 = "504b929cb517230515102500-ab452ff6";
+        long timeStamp = System.currentTimeMillis();
+        long t1 = System.nanoTime();
+
+        String s2 = s1 + "_" + timeStamp;
+        System.out.println("s2 = "+s2+", length = " + s2.length());
+
+    }
 
     @Test
     public void testJson() {
@@ -189,5 +204,125 @@ public class TestJson {
         couponTypeOptions.add(couponType8);
 
         return couponTypeOptions;
+    }
+
+
+    @Test
+    public void testJSON() {
+        AddressMO addressMO = new AddressMO();
+        addressMO.setStreet("上海市徐汇区田林街道");
+        addressMO.setRoomNumber("1002");
+
+
+        BrotherMO brotherMO = new BrotherMO();
+        brotherMO.setName("我是哥哥");
+//        Mapper mapper = new DozerBeanMapper();
+//        AddressMO addressMO1 = new AddressMO();
+//        mapper.map(addressMO, addressMO1);
+        brotherMO.setAddressMO(addressMO);
+        brotherMO.setClassName("上海中学");
+
+        PersonMO personMO = new PersonMO();
+        personMO.setName("我是弟弟");
+        personMO.setAge(10);
+        personMO.setAddressMO(addressMO);
+        personMO.setBrotherMO(brotherMO);
+
+        String ss = JSON.toJSONString(personMO);
+        System.out.println("ss ===== " +ss);
+
+        PersonMO personMO1 = JSON.parseObject(ss, PersonMO.class);
+
+        System.out.println(personMO1);
+    }
+
+    public static class PersonMO {
+        private String name;
+        private int age;
+        private AddressMO addressMO;
+        private BrotherMO brotherMO;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
+
+        public AddressMO getAddressMO() {
+            return addressMO;
+        }
+
+        public void setAddressMO(AddressMO addressMO) {
+            this.addressMO = addressMO;
+        }
+
+        public BrotherMO getBrotherMO() {
+            return brotherMO;
+        }
+
+        public void setBrotherMO(BrotherMO brotherMO) {
+            this.brotherMO = brotherMO;
+        }
+    }
+
+    public static class AddressMO {
+        private String street;
+        private String roomNumber;
+
+        public String getStreet() {
+            return street;
+        }
+
+        public void setStreet(String street) {
+            this.street = street;
+        }
+
+        public String getRoomNumber() {
+            return roomNumber;
+        }
+
+        public void setRoomNumber(String roomNumber) {
+            this.roomNumber = roomNumber;
+        }
+    }
+
+    public static class BrotherMO {
+        private String name;
+        private String className;
+        private AddressMO addressMO;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getClassName() {
+            return className;
+        }
+
+        public void setClassName(String className) {
+            this.className = className;
+        }
+
+        public AddressMO getAddressMO() {
+            return addressMO;
+        }
+
+        public void setAddressMO(AddressMO addressMO) {
+            this.addressMO = addressMO;
+        }
     }
 }

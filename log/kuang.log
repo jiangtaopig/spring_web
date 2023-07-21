@@ -2985,3 +2985,306 @@ java.net.ConnectException: Connection refused: no further information
 [DEBUG][23-03-30][org.apache.http.impl.execchain.MainClientExec]Connection can be kept alive indefinitely
 [DEBUG][23-03-30][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection [id: 0][route: {s}->https://api.push.oppomobile.com:443] can be kept alive indefinitely
 [DEBUG][23-03-30][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection released: [id: 0][route: {s}->https://api.push.oppomobile.com:443][total kept alive: 1; route allocated: 1 of 5; total allocated: 1 of 10]
+[DEBUG][23-05-06][org.apache.http.client.protocol.RequestAddCookies]CookieSpec selected: default
+[DEBUG][23-05-06][org.apache.http.client.protocol.RequestAuthCache]Auth cache not set in the context
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection request: [route: {s}->https://api.push.oppomobile.com:443][total kept alive: 0; route allocated: 0 of 5; total allocated: 0 of 10]
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection leased: [id: 0][route: {s}->https://api.push.oppomobile.com:443][total kept alive: 0; route allocated: 1 of 5; total allocated: 1 of 10]
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Opening connection {s}->https://api.push.oppomobile.com:443
+[DEBUG][23-05-06][org.apache.http.impl.conn.DefaultHttpClientConnectionOperator]Connecting to api.push.oppomobile.com/111.206.136.147:443
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory]Connecting socket to api.push.oppomobile.com/111.206.136.147:443 with timeout 0
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory]Enabled protocols: [TLSv1.2]
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory]Enabled cipher suites:[TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_256_GCM_SHA384, TLS_DHE_DSS_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_DSS_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_RSA_WITH_AES_256_CBC_SHA256, TLS_DHE_DSS_WITH_AES_256_CBC_SHA256, TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_DSS_WITH_AES_128_CBC_SHA256, TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384, TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_DSS_WITH_AES_256_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDH_RSA_WITH_AES_256_CBC_SHA, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_GCM_SHA384, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_EMPTY_RENEGOTIATION_INFO_SCSV]
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory]Starting handshake
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory]Secure session established
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory] negotiated protocol: TLSv1.2
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory] negotiated cipher suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory] peer principal: CN=www.oppomobile.com, O=广东欢太科技有限公司, L=东莞市, ST=广东省, C=CN
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory] peer alternative names: [www.oppomobile.com, cloud.oppoer.me, *.cloud.oppoer.me, i.vc.nearme.com.cn, keke.cn, nearme.com.cn, oppo.mobi, oppoer.me, oppopay.com, *.oppomobile.com, *.ads.oppomobile.com, *.apps.oppomobile.com, *.bot.oppomobile.com, *.browser.oppomobile.com, *.cdo.oppomobile.com, *.dc.oppomobile.com, *.finz.oppomobile.com, *.game.oppomobile.com, *.instant.oppomobile.com, *.iot.oppomobile.com, *.keke.cn, *.magzine.oppomobile.com, *.nearme.com.cn, *.ocloud.oppomobile.com, *.open.oppomobile.com, *.oppo.mobi, *.oppoer.me, *.oppopay.com, *.pull.oppomobile.com, *.push.oppomobile.com, *.search.oppomobile.com, *.shopping.oppomobile.com, *.store.oppomobile.com, *.theme.oppomobile.com, *.uc.oppomobile.com, *.weather.oppomobile.com, oppomobile.com]
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory] issuer principal: CN=GeoTrust CN RSA CA G1, OU=www.digicert.com, O=DigiCert Inc, C=US
+[DEBUG][23-05-06][org.apache.http.impl.conn.DefaultHttpClientConnectionOperator]Connection established 10.118.14.48:56088<->111.206.136.147:443
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Executing request POST /server/v1/auth HTTP/1.1
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Target auth state: UNCHALLENGED
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Proxy auth state: UNCHALLENGED
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> POST /server/v1/auth HTTP/1.1
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Content-Length: 162
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Host: api.push.oppomobile.com
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Connection: Keep-Alive
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.1 (Java/1.8.0_333)
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Accept-Encoding: gzip,deflate
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "POST /server/v1/auth HTTP/1.1[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Content-Length: 162[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Host: api.push.oppomobile.com[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.1 (Java/1.8.0_333)[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "sign=f47f05b2016bc991a1f6f50bdfbdd5c7ef95c79a992c63c2a0fe76eea071bc20&sdk_version=JAVA_SDK_V1.0.6&app_key=fc8e845db29e459ea698b0a13184812d&timestamp=1683350590336"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Server: nginx[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Date: Sat, 06 May 2023 05:23:11 GMT[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Content-Type: application/json;charset=UTF-8[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Content-Length: 119[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "X-Backend-Host: 0382:8082[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "X-Gateway-Host: cdd5831c2299f48086bd61192855e2003f49ef0cb03627023ff6a5beac0b0590aaa6a69672bee83974fc020caf87b5521ea00b3cccfa0b3cd931f6745a779c16[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "{"code":0,"data":{"auth_token":"8366216a-3238-49eb-9d97-f814784873fb","create_time":1683272572700},"message":"Success"}"
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << HTTP/1.1 200 OK
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Server: nginx
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Date: Sat, 06 May 2023 05:23:11 GMT
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Content-Type: application/json;charset=UTF-8
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Content-Length: 119
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Connection: keep-alive
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << X-Backend-Host: 0382:8082
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << X-Gateway-Host: cdd5831c2299f48086bd61192855e2003f49ef0cb03627023ff6a5beac0b0590aaa6a69672bee83974fc020caf87b5521ea00b3cccfa0b3cd931f6745a779c16
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Connection can be kept alive indefinitely
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection [id: 0][route: {s}->https://api.push.oppomobile.com:443] can be kept alive indefinitely
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection released: [id: 0][route: {s}->https://api.push.oppomobile.com:443][total kept alive: 1; route allocated: 1 of 5; total allocated: 1 of 10]
+[DEBUG][23-05-06][org.apache.http.client.protocol.RequestAddCookies]CookieSpec selected: default
+[DEBUG][23-05-06][org.apache.http.client.protocol.RequestAuthCache]Auth cache not set in the context
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection request: [route: {s}->https://api.push.oppomobile.com:443][total kept alive: 1; route allocated: 1 of 5; total allocated: 1 of 10]
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection leased: [id: 0][route: {s}->https://api.push.oppomobile.com:443][total kept alive: 0; route allocated: 1 of 5; total allocated: 1 of 10]
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Executing request POST /server/v1/message/notification/unicast HTTP/1.1
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Target auth state: UNCHALLENGED
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Proxy auth state: UNCHALLENGED
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> POST /server/v1/message/notification/unicast HTTP/1.1
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Content-Length: 2067
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Host: api.push.oppomobile.com
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Connection: Keep-Alive
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.1 (Java/1.8.0_333)
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Accept-Encoding: gzip,deflate
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "POST /server/v1/message/notification/unicast HTTP/1.1[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Content-Length: 2067[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Host: api.push.oppomobile.com[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.1 (Java/1.8.0_333)[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "sdk_version=JAVA_SDK_V1.0.6&auth_token=8366216a-3238-49eb-9d97-f814784873fb&message=%7B%22notification%22%3A%7B%22show_time_type%22%3A0%2C%22title%22%3A%22%E6%8E%A8%E4%BF%AE%E4%BB%BB%E5%8A%A1%22%2C%22content%22%3A%22+%2Cxxxx%2C+%E5%8F%91%E7%94%9F%E4%BA%BA%E4%BC%A4%E7%B1%BB%E4%BA%8B%E6%95%85%2C+%E5%87%BA%E9%99%A9%E6%97%B6%E9%97%B4%EF%BC%9A2022-07-11+23%3A54%3A38%2C+%E5%87%BA%E9%99%A9%E5%9C%B0%E7%82%B9%EF%BC%9A%E9%98%BF%E5%85%8B%E8%8B%8F%E5%B8%82%E6%98%8E%E7%8F%A0%E8%B7%AF%E5%92%8C%E5%B9%B8%E7%A6%8F%E8%B7%AF%E4%BA%A4%E6%B1%87%E5%A4%84%2C+%E5%AE%A2%E6%88%B7xx+%22%2C%22call_back_parameter%22%3A%22xxxOppo888%22%2C%22action_parameters%22%3A%22%7B%5C%22androidData%5C%22%3A%7B%5C%22androidMusic%5C%22%3A%5C%22pushrepair.mp3%5C%22%2C%5C%22businessNo%5C%22%3A%5C%2220160027%5C%22%2C%5C%22businessData%5C%22%3A%5C%22%7B%5C%5C%5C%22licenseNo%5C%5C%5C%22%3A%5C%5C%5C%22xxxx%5C%5C%5C%22%2C%5C%5C%5C%22receiver%5C%5C%5C%22%3A%5C%5C%5C%22pxq123456%5C%5C%5C%22%2C%5C%5C%5C%22dealerCode%5C%5C%5C%22%3A%5C%5C%5C%22VW00606%5C%5C%5C%22%2C%5C%5C%5C%22label%5C%5C%5C%22%3A%5C%5C%5C%22%E4%BA%BA%E4%BC%A4%5C%5C%5C%22%2C%5C%5C%5C%22insurerCode%5C%5C%5C%22%3A%5C%5C%5C%22picc%5C%5C%5C%22%7D%5C%22%2C%5C%22messageId%5C%22%3A%5C%22232709983%5C%22%2C%5C%22businessType%5C%22%3A%5C%22MSG_PUSH_TASK%5C%22%2C%5C%22content%5C%22%3A%5C%22+%2Cxxxx%2C+%E5%8F%91%E7%94%9F%E4%BA%BA%E4%BC%A4%E7%B1%BB%E4%BA%8B%E6%95%85%2C+%E5%87%BA%E9%99%A9%E6%97%B6%E9%97%B4%EF%BC%9A2022-07-11+23%3A54%3A38%2C+%E5%87%BA%E9%99%A9%E5%9C%B0%E7%82%B9%EF%BC%9A%E9%98%BF%E5%85%8B%E8%8B%8F%E5%B8%82%E6%98%8E%E7%8F%A0%E8%B7%AF%E5%92%8C%E5%B9%B8%E7%A6%8F%E8%B7%AF%E4%BA%A4%E6%B1%87%E5%A4%84%2C+%E5%AE%A2%E6%88%B7xx+%5C%22%7D%7D%22%2C%22push_time_type%22%3A0%2C%22click_action_type%22%3A0%2C%22style%22%3A2%2C%22network_type%22%3A0%2C%22channel_id%22%3A%22sound_oppo%22%2C%22app_message_id%22%3A%22c4b17b25-3c94-461c-908e-cf9be991deb0%22%2C%22call_back_url%22%3A%22https%3A%2F%2Fxxx%3A18443%2Fdim-app%2Fmsgcallback%2Foppo%22%7D%2C%22target_value%22%3A%22OPPO_CN_af467831a4be8b63b0a03817198fe2c5%22%2C%22target_type%22%3A2%7D"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Server: nginx[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Date: Sat, 06 May 2023 05:23:11 GMT[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Content-Type: application/json;charset=UTF-8[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Content-Length: 115[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "X-Backend-Host: 0926:8082[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "X-Gateway-Host: cdd5831c2299f48086bd61192855e2003f49ef0cb03627023ff6a5beac0b0590aaa6a69672bee83974fc020caf87b5521ea00b3cccfa0b3cd931f6745a779c16[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "{"code":0,"data":{"messageId":"30261266-1-1-6455e43fa088b7ed8992de77","status":"call_success"},"message":"Success"}"
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << HTTP/1.1 200 OK
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Server: nginx
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Date: Sat, 06 May 2023 05:23:11 GMT
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Content-Type: application/json;charset=UTF-8
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Content-Length: 115
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Connection: keep-alive
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << X-Backend-Host: 0926:8082
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << X-Gateway-Host: cdd5831c2299f48086bd61192855e2003f49ef0cb03627023ff6a5beac0b0590aaa6a69672bee83974fc020caf87b5521ea00b3cccfa0b3cd931f6745a779c16
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Connection can be kept alive indefinitely
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection [id: 0][route: {s}->https://api.push.oppomobile.com:443] can be kept alive indefinitely
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection released: [id: 0][route: {s}->https://api.push.oppomobile.com:443][total kept alive: 1; route allocated: 1 of 5; total allocated: 1 of 10]
+[DEBUG][23-05-06][org.apache.http.client.protocol.RequestAddCookies]CookieSpec selected: default
+[DEBUG][23-05-06][org.apache.http.client.protocol.RequestAuthCache]Auth cache not set in the context
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection request: [route: {s}->https://api.push.oppomobile.com:443][total kept alive: 0; route allocated: 0 of 5; total allocated: 0 of 10]
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection leased: [id: 0][route: {s}->https://api.push.oppomobile.com:443][total kept alive: 0; route allocated: 1 of 5; total allocated: 1 of 10]
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Opening connection {s}->https://api.push.oppomobile.com:443
+[DEBUG][23-05-06][org.apache.http.impl.conn.DefaultHttpClientConnectionOperator]Connecting to api.push.oppomobile.com/111.206.136.147:443
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory]Connecting socket to api.push.oppomobile.com/111.206.136.147:443 with timeout 0
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory]Enabled protocols: [TLSv1.2]
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory]Enabled cipher suites:[TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_256_GCM_SHA384, TLS_DHE_DSS_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_DSS_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_RSA_WITH_AES_256_CBC_SHA256, TLS_DHE_DSS_WITH_AES_256_CBC_SHA256, TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_DSS_WITH_AES_128_CBC_SHA256, TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384, TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_DSS_WITH_AES_256_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDH_RSA_WITH_AES_256_CBC_SHA, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_GCM_SHA384, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_EMPTY_RENEGOTIATION_INFO_SCSV]
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory]Starting handshake
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory]Secure session established
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory] negotiated protocol: TLSv1.2
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory] negotiated cipher suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory] peer principal: CN=www.oppomobile.com, O=广东欢太科技有限公司, L=东莞市, ST=广东省, C=CN
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory] peer alternative names: [www.oppomobile.com, cloud.oppoer.me, *.cloud.oppoer.me, i.vc.nearme.com.cn, keke.cn, nearme.com.cn, oppo.mobi, oppoer.me, oppopay.com, *.oppomobile.com, *.ads.oppomobile.com, *.apps.oppomobile.com, *.bot.oppomobile.com, *.browser.oppomobile.com, *.cdo.oppomobile.com, *.dc.oppomobile.com, *.finz.oppomobile.com, *.game.oppomobile.com, *.instant.oppomobile.com, *.iot.oppomobile.com, *.keke.cn, *.magzine.oppomobile.com, *.nearme.com.cn, *.ocloud.oppomobile.com, *.open.oppomobile.com, *.oppo.mobi, *.oppoer.me, *.oppopay.com, *.pull.oppomobile.com, *.push.oppomobile.com, *.search.oppomobile.com, *.shopping.oppomobile.com, *.store.oppomobile.com, *.theme.oppomobile.com, *.uc.oppomobile.com, *.weather.oppomobile.com, oppomobile.com]
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory] issuer principal: CN=GeoTrust CN RSA CA G1, OU=www.digicert.com, O=DigiCert Inc, C=US
+[DEBUG][23-05-06][org.apache.http.impl.conn.DefaultHttpClientConnectionOperator]Connection established 10.118.14.48:56167<->111.206.136.147:443
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Executing request POST /server/v1/auth HTTP/1.1
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Target auth state: UNCHALLENGED
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Proxy auth state: UNCHALLENGED
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> POST /server/v1/auth HTTP/1.1
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Content-Length: 162
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Host: api.push.oppomobile.com
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Connection: Keep-Alive
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.1 (Java/1.8.0_333)
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Accept-Encoding: gzip,deflate
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "POST /server/v1/auth HTTP/1.1[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Content-Length: 162[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Host: api.push.oppomobile.com[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.1 (Java/1.8.0_333)[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "sign=63a7df1bd7173f0944ac1ce0170c53af953df01027d5d72169b48e77fa790591&sdk_version=JAVA_SDK_V1.0.6&app_key=fc8e845db29e459ea698b0a13184812d&timestamp=1683350638302"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Server: nginx[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Date: Sat, 06 May 2023 05:23:59 GMT[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Content-Type: application/json;charset=UTF-8[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Content-Length: 119[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "X-Backend-Host: 0382:8082[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "X-Gateway-Host: f1cac7a764440af608aaac786db890a85eb4523ceae6af616a99b7b71728704fda2969d69fa23d0c2827c2a26d1a0bb5ab301d607db4e9fba32d9e81891847b9[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "{"code":0,"data":{"auth_token":"8366216a-3238-49eb-9d97-f814784873fb","create_time":1683272572700},"message":"Success"}"
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << HTTP/1.1 200 OK
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Server: nginx
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Date: Sat, 06 May 2023 05:23:59 GMT
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Content-Type: application/json;charset=UTF-8
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Content-Length: 119
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Connection: keep-alive
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << X-Backend-Host: 0382:8082
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << X-Gateway-Host: f1cac7a764440af608aaac786db890a85eb4523ceae6af616a99b7b71728704fda2969d69fa23d0c2827c2a26d1a0bb5ab301d607db4e9fba32d9e81891847b9
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Connection can be kept alive indefinitely
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection [id: 0][route: {s}->https://api.push.oppomobile.com:443] can be kept alive indefinitely
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection released: [id: 0][route: {s}->https://api.push.oppomobile.com:443][total kept alive: 1; route allocated: 1 of 5; total allocated: 1 of 10]
+[DEBUG][23-05-06][org.apache.http.client.protocol.RequestAddCookies]CookieSpec selected: default
+[DEBUG][23-05-06][org.apache.http.client.protocol.RequestAuthCache]Auth cache not set in the context
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection request: [route: {s}->https://api.push.oppomobile.com:443][total kept alive: 1; route allocated: 1 of 5; total allocated: 1 of 10]
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection leased: [id: 0][route: {s}->https://api.push.oppomobile.com:443][total kept alive: 0; route allocated: 1 of 5; total allocated: 1 of 10]
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Executing request POST /server/v1/message/notification/unicast HTTP/1.1
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Target auth state: UNCHALLENGED
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Proxy auth state: UNCHALLENGED
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> POST /server/v1/message/notification/unicast HTTP/1.1
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Content-Length: 2067
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Host: api.push.oppomobile.com
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Connection: Keep-Alive
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.1 (Java/1.8.0_333)
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Accept-Encoding: gzip,deflate
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "POST /server/v1/message/notification/unicast HTTP/1.1[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Content-Length: 2067[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Host: api.push.oppomobile.com[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.1 (Java/1.8.0_333)[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "sdk_version=JAVA_SDK_V1.0.6&auth_token=8366216a-3238-49eb-9d97-f814784873fb&message=%7B%22notification%22%3A%7B%22show_time_type%22%3A0%2C%22title%22%3A%22%E6%8E%A8%E4%BF%AE%E4%BB%BB%E5%8A%A1%22%2C%22content%22%3A%22+%2Cxxxx%2C+%E5%8F%91%E7%94%9F%E4%BA%BA%E4%BC%A4%E7%B1%BB%E4%BA%8B%E6%95%85%2C+%E5%87%BA%E9%99%A9%E6%97%B6%E9%97%B4%EF%BC%9A2022-07-11+23%3A54%3A38%2C+%E5%87%BA%E9%99%A9%E5%9C%B0%E7%82%B9%EF%BC%9A%E9%98%BF%E5%85%8B%E8%8B%8F%E5%B8%82%E6%98%8E%E7%8F%A0%E8%B7%AF%E5%92%8C%E5%B9%B8%E7%A6%8F%E8%B7%AF%E4%BA%A4%E6%B1%87%E5%A4%84%2C+%E5%AE%A2%E6%88%B7xx+%22%2C%22call_back_parameter%22%3A%22xxxOppo888%22%2C%22action_parameters%22%3A%22%7B%5C%22androidData%5C%22%3A%7B%5C%22androidMusic%5C%22%3A%5C%22pushrepair.mp3%5C%22%2C%5C%22businessNo%5C%22%3A%5C%2220160027%5C%22%2C%5C%22businessData%5C%22%3A%5C%22%7B%5C%5C%5C%22licenseNo%5C%5C%5C%22%3A%5C%5C%5C%22xxxx%5C%5C%5C%22%2C%5C%5C%5C%22receiver%5C%5C%5C%22%3A%5C%5C%5C%22pxq123456%5C%5C%5C%22%2C%5C%5C%5C%22dealerCode%5C%5C%5C%22%3A%5C%5C%5C%22VW00606%5C%5C%5C%22%2C%5C%5C%5C%22label%5C%5C%5C%22%3A%5C%5C%5C%22%E4%BA%BA%E4%BC%A4%5C%5C%5C%22%2C%5C%5C%5C%22insurerCode%5C%5C%5C%22%3A%5C%5C%5C%22picc%5C%5C%5C%22%7D%5C%22%2C%5C%22messageId%5C%22%3A%5C%22232709983%5C%22%2C%5C%22businessType%5C%22%3A%5C%22MSG_PUSH_TASK%5C%22%2C%5C%22content%5C%22%3A%5C%22+%2Cxxxx%2C+%E5%8F%91%E7%94%9F%E4%BA%BA%E4%BC%A4%E7%B1%BB%E4%BA%8B%E6%95%85%2C+%E5%87%BA%E9%99%A9%E6%97%B6%E9%97%B4%EF%BC%9A2022-07-11+23%3A54%3A38%2C+%E5%87%BA%E9%99%A9%E5%9C%B0%E7%82%B9%EF%BC%9A%E9%98%BF%E5%85%8B%E8%8B%8F%E5%B8%82%E6%98%8E%E7%8F%A0%E8%B7%AF%E5%92%8C%E5%B9%B8%E7%A6%8F%E8%B7%AF%E4%BA%A4%E6%B1%87%E5%A4%84%2C+%E5%AE%A2%E6%88%B7xx+%5C%22%7D%7D%22%2C%22push_time_type%22%3A0%2C%22click_action_type%22%3A0%2C%22style%22%3A2%2C%22network_type%22%3A0%2C%22channel_id%22%3A%22sound_oppo%22%2C%22app_message_id%22%3A%226f17322d-13c2-4769-9c06-8b5a5e396223%22%2C%22call_back_url%22%3A%22https%3A%2F%2Fxxx%3A18443%2Fdim-app%2Fmsgcallback%2Foppo%22%7D%2C%22target_value%22%3A%22OPPO_CN_af467831a4be8b63b0a03817198fe2c5%22%2C%22target_type%22%3A2%7D"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Server: nginx[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Date: Sat, 06 May 2023 05:23:59 GMT[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Content-Type: application/json;charset=UTF-8[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Content-Length: 115[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "X-Backend-Host: 0315:8082[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "X-Gateway-Host: f1cac7a764440af608aaac786db890a85eb4523ceae6af616a99b7b71728704fda2969d69fa23d0c2827c2a26d1a0bb5ab301d607db4e9fba32d9e81891847b9[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "{"code":0,"data":{"messageId":"30261266-1-1-6455e46f61fc63068fc6772c","status":"call_success"},"message":"Success"}"
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << HTTP/1.1 200 OK
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Server: nginx
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Date: Sat, 06 May 2023 05:23:59 GMT
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Content-Type: application/json;charset=UTF-8
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Content-Length: 115
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Connection: keep-alive
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << X-Backend-Host: 0315:8082
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << X-Gateway-Host: f1cac7a764440af608aaac786db890a85eb4523ceae6af616a99b7b71728704fda2969d69fa23d0c2827c2a26d1a0bb5ab301d607db4e9fba32d9e81891847b9
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Connection can be kept alive indefinitely
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection [id: 0][route: {s}->https://api.push.oppomobile.com:443] can be kept alive indefinitely
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection released: [id: 0][route: {s}->https://api.push.oppomobile.com:443][total kept alive: 1; route allocated: 1 of 5; total allocated: 1 of 10]
+[DEBUG][23-05-06][org.apache.http.client.protocol.RequestAddCookies]CookieSpec selected: default
+[DEBUG][23-05-06][org.apache.http.client.protocol.RequestAuthCache]Auth cache not set in the context
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection request: [route: {s}->https://api.push.oppomobile.com:443][total kept alive: 0; route allocated: 0 of 5; total allocated: 0 of 10]
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection leased: [id: 0][route: {s}->https://api.push.oppomobile.com:443][total kept alive: 0; route allocated: 1 of 5; total allocated: 1 of 10]
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Opening connection {s}->https://api.push.oppomobile.com:443
+[DEBUG][23-05-06][org.apache.http.impl.conn.DefaultHttpClientConnectionOperator]Connecting to api.push.oppomobile.com/111.206.136.147:443
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory]Connecting socket to api.push.oppomobile.com/111.206.136.147:443 with timeout 0
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory]Enabled protocols: [TLSv1.2]
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory]Enabled cipher suites:[TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_256_GCM_SHA384, TLS_DHE_DSS_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_DSS_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_RSA_WITH_AES_256_CBC_SHA256, TLS_DHE_DSS_WITH_AES_256_CBC_SHA256, TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_DSS_WITH_AES_128_CBC_SHA256, TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384, TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_DSS_WITH_AES_256_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDH_RSA_WITH_AES_256_CBC_SHA, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_GCM_SHA384, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_EMPTY_RENEGOTIATION_INFO_SCSV]
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory]Starting handshake
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory]Secure session established
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory] negotiated protocol: TLSv1.2
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory] negotiated cipher suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory] peer principal: CN=www.oppomobile.com, O=广东欢太科技有限公司, L=东莞市, ST=广东省, C=CN
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory] peer alternative names: [www.oppomobile.com, cloud.oppoer.me, *.cloud.oppoer.me, i.vc.nearme.com.cn, keke.cn, nearme.com.cn, oppo.mobi, oppoer.me, oppopay.com, *.oppomobile.com, *.ads.oppomobile.com, *.apps.oppomobile.com, *.bot.oppomobile.com, *.browser.oppomobile.com, *.cdo.oppomobile.com, *.dc.oppomobile.com, *.finz.oppomobile.com, *.game.oppomobile.com, *.instant.oppomobile.com, *.iot.oppomobile.com, *.keke.cn, *.magzine.oppomobile.com, *.nearme.com.cn, *.ocloud.oppomobile.com, *.open.oppomobile.com, *.oppo.mobi, *.oppoer.me, *.oppopay.com, *.pull.oppomobile.com, *.push.oppomobile.com, *.search.oppomobile.com, *.shopping.oppomobile.com, *.store.oppomobile.com, *.theme.oppomobile.com, *.uc.oppomobile.com, *.weather.oppomobile.com, oppomobile.com]
+[DEBUG][23-05-06][org.apache.http.conn.ssl.SSLConnectionSocketFactory] issuer principal: CN=GeoTrust CN RSA CA G1, OU=www.digicert.com, O=DigiCert Inc, C=US
+[DEBUG][23-05-06][org.apache.http.impl.conn.DefaultHttpClientConnectionOperator]Connection established 10.118.14.48:56264<->111.206.136.147:443
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Executing request POST /server/v1/auth HTTP/1.1
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Target auth state: UNCHALLENGED
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Proxy auth state: UNCHALLENGED
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> POST /server/v1/auth HTTP/1.1
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Content-Length: 162
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Host: api.push.oppomobile.com
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Connection: Keep-Alive
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.1 (Java/1.8.0_333)
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Accept-Encoding: gzip,deflate
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "POST /server/v1/auth HTTP/1.1[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Content-Length: 162[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Host: api.push.oppomobile.com[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.1 (Java/1.8.0_333)[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "sign=80d99d34acba56620e0e5ffd57ce6609fe6e1f6393263d9e14a32a3902fb82d1&sdk_version=JAVA_SDK_V1.0.6&app_key=fc8e845db29e459ea698b0a13184812d&timestamp=1683350702286"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Server: nginx[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Date: Sat, 06 May 2023 05:25:03 GMT[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Content-Type: application/json;charset=UTF-8[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Content-Length: 119[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "X-Backend-Host: 0399:8082[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "X-Gateway-Host: 03a2e32a9e388ecf2b62c80559da1ece5eb4523ceae6af616a99b7b71728704fda2969d69fa23d0c2827c2a26d1a0bb5ab301d607db4e9fba32d9e81891847b9[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "{"code":0,"data":{"auth_token":"8366216a-3238-49eb-9d97-f814784873fb","create_time":1683272572700},"message":"Success"}"
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << HTTP/1.1 200 OK
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Server: nginx
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Date: Sat, 06 May 2023 05:25:03 GMT
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Content-Type: application/json;charset=UTF-8
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Content-Length: 119
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Connection: keep-alive
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << X-Backend-Host: 0399:8082
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << X-Gateway-Host: 03a2e32a9e388ecf2b62c80559da1ece5eb4523ceae6af616a99b7b71728704fda2969d69fa23d0c2827c2a26d1a0bb5ab301d607db4e9fba32d9e81891847b9
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Connection can be kept alive indefinitely
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection [id: 0][route: {s}->https://api.push.oppomobile.com:443] can be kept alive indefinitely
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection released: [id: 0][route: {s}->https://api.push.oppomobile.com:443][total kept alive: 1; route allocated: 1 of 5; total allocated: 1 of 10]
+[DEBUG][23-05-06][org.apache.http.client.protocol.RequestAddCookies]CookieSpec selected: default
+[DEBUG][23-05-06][org.apache.http.client.protocol.RequestAuthCache]Auth cache not set in the context
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection request: [route: {s}->https://api.push.oppomobile.com:443][total kept alive: 1; route allocated: 1 of 5; total allocated: 1 of 10]
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection leased: [id: 0][route: {s}->https://api.push.oppomobile.com:443][total kept alive: 0; route allocated: 1 of 5; total allocated: 1 of 10]
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Executing request POST /server/v1/message/notification/unicast HTTP/1.1
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Target auth state: UNCHALLENGED
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Proxy auth state: UNCHALLENGED
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> POST /server/v1/message/notification/unicast HTTP/1.1
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Content-Length: 2067
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Host: api.push.oppomobile.com
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Connection: Keep-Alive
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.1 (Java/1.8.0_333)
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 >> Accept-Encoding: gzip,deflate
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "POST /server/v1/message/notification/unicast HTTP/1.1[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Content-Length: 2067[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Host: api.push.oppomobile.com[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.1 (Java/1.8.0_333)[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 >> "sdk_version=JAVA_SDK_V1.0.6&auth_token=8366216a-3238-49eb-9d97-f814784873fb&message=%7B%22notification%22%3A%7B%22show_time_type%22%3A0%2C%22title%22%3A%22%E6%8E%A8%E4%BF%AE%E4%BB%BB%E5%8A%A1%22%2C%22content%22%3A%22+%2Cxxxx%2C+%E5%8F%91%E7%94%9F%E4%BA%BA%E4%BC%A4%E7%B1%BB%E4%BA%8B%E6%95%85%2C+%E5%87%BA%E9%99%A9%E6%97%B6%E9%97%B4%EF%BC%9A2022-07-11+23%3A54%3A38%2C+%E5%87%BA%E9%99%A9%E5%9C%B0%E7%82%B9%EF%BC%9A%E9%98%BF%E5%85%8B%E8%8B%8F%E5%B8%82%E6%98%8E%E7%8F%A0%E8%B7%AF%E5%92%8C%E5%B9%B8%E7%A6%8F%E8%B7%AF%E4%BA%A4%E6%B1%87%E5%A4%84%2C+%E5%AE%A2%E6%88%B7xx+%22%2C%22call_back_parameter%22%3A%22xxxOppo888%22%2C%22action_parameters%22%3A%22%7B%5C%22androidData%5C%22%3A%7B%5C%22androidMusic%5C%22%3A%5C%22pushrepair.mp3%5C%22%2C%5C%22businessNo%5C%22%3A%5C%2220160027%5C%22%2C%5C%22businessData%5C%22%3A%5C%22%7B%5C%5C%5C%22licenseNo%5C%5C%5C%22%3A%5C%5C%5C%22xxxx%5C%5C%5C%22%2C%5C%5C%5C%22receiver%5C%5C%5C%22%3A%5C%5C%5C%22pxq123456%5C%5C%5C%22%2C%5C%5C%5C%22dealerCode%5C%5C%5C%22%3A%5C%5C%5C%22VW00606%5C%5C%5C%22%2C%5C%5C%5C%22label%5C%5C%5C%22%3A%5C%5C%5C%22%E4%BA%BA%E4%BC%A4%5C%5C%5C%22%2C%5C%5C%5C%22insurerCode%5C%5C%5C%22%3A%5C%5C%5C%22picc%5C%5C%5C%22%7D%5C%22%2C%5C%22messageId%5C%22%3A%5C%22232709983%5C%22%2C%5C%22businessType%5C%22%3A%5C%22MSG_PUSH_TASK%5C%22%2C%5C%22content%5C%22%3A%5C%22+%2Cxxxx%2C+%E5%8F%91%E7%94%9F%E4%BA%BA%E4%BC%A4%E7%B1%BB%E4%BA%8B%E6%95%85%2C+%E5%87%BA%E9%99%A9%E6%97%B6%E9%97%B4%EF%BC%9A2022-07-11+23%3A54%3A38%2C+%E5%87%BA%E9%99%A9%E5%9C%B0%E7%82%B9%EF%BC%9A%E9%98%BF%E5%85%8B%E8%8B%8F%E5%B8%82%E6%98%8E%E7%8F%A0%E8%B7%AF%E5%92%8C%E5%B9%B8%E7%A6%8F%E8%B7%AF%E4%BA%A4%E6%B1%87%E5%A4%84%2C+%E5%AE%A2%E6%88%B7xx+%5C%22%7D%7D%22%2C%22push_time_type%22%3A0%2C%22click_action_type%22%3A0%2C%22style%22%3A2%2C%22network_type%22%3A0%2C%22channel_id%22%3A%22sound_oppo%22%2C%22app_message_id%22%3A%22d5487509-6411-47a2-ab62-5ed62c3b6954%22%2C%22call_back_url%22%3A%22https%3A%2F%2Fxxx%3A18443%2Fdim-app%2Fmsgcallback%2Foppo%22%7D%2C%22target_value%22%3A%22OPPO_CN_af467831a4be8b63b0a03817198fe2c5%22%2C%22target_type%22%3A2%7D"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Server: nginx[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Date: Sat, 06 May 2023 05:25:03 GMT[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Content-Type: application/json;charset=UTF-8[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Content-Length: 115[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "X-Backend-Host: 0385:8082[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "X-Gateway-Host: 03a2e32a9e388ecf2b62c80559da1ece5eb4523ceae6af616a99b7b71728704fda2969d69fa23d0c2827c2a26d1a0bb5ab301d607db4e9fba32d9e81891847b9[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "[\r][\n]"
+[DEBUG][23-05-06][org.apache.http.wire]http-outgoing-0 << "{"code":0,"data":{"messageId":"30261266-1-1-6455e4afe2047df30f910ddf","status":"call_success"},"message":"Success"}"
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << HTTP/1.1 200 OK
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Server: nginx
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Date: Sat, 06 May 2023 05:25:03 GMT
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Content-Type: application/json;charset=UTF-8
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Content-Length: 115
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << Connection: keep-alive
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << X-Backend-Host: 0385:8082
+[DEBUG][23-05-06][org.apache.http.headers]http-outgoing-0 << X-Gateway-Host: 03a2e32a9e388ecf2b62c80559da1ece5eb4523ceae6af616a99b7b71728704fda2969d69fa23d0c2827c2a26d1a0bb5ab301d607db4e9fba32d9e81891847b9
+[DEBUG][23-05-06][org.apache.http.impl.execchain.MainClientExec]Connection can be kept alive indefinitely
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection [id: 0][route: {s}->https://api.push.oppomobile.com:443] can be kept alive indefinitely
+[DEBUG][23-05-06][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection released: [id: 0][route: {s}->https://api.push.oppomobile.com:443][total kept alive: 1; route allocated: 1 of 5; total allocated: 1 of 10]

@@ -118,7 +118,7 @@ public class HttpPost {
     private void sendErrMsg(String msg){
         System.out.println(msg);
         try {
-            URL url = new URL("http://xxxx/app/business/appErrSave");
+            URL url = new URL("https://dimapp.insaic.com:18443/dim-app/app/business/appErrSave");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             connection.setRequestMethod("POST");

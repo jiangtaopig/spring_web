@@ -1,9 +1,5 @@
 package com.test.annotation;
 
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.support.BeanDefinitionReader;
-import org.springframework.core.io.Resource;
-
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;

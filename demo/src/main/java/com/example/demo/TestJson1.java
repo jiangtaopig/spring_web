@@ -7,11 +7,46 @@ import lombok.Data;
 import org.junit.Test;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class TestJson1 {
 
     private String entryStr = "";
+
+    @Test
+    public void testsss() {
+        Map weChatArguments = new HashMap();
+        weChatArguments.put("orderNo","xxxxxx");
+        weChatArguments.put("inputMode","S");
+
+        Map weChatParam = new HashMap();
+        weChatParam.put("pageTemplateName","QuoteDetailScreen");
+        weChatParam.put("arguments",weChatArguments);
+
+        Map map = new HashMap();
+        map.put("type","share");
+        map.put("platform","weChat");
+        map.put("title","车险报价");
+        map.put("description","尊敬的客户，这是您的爱车"+"xxxx_0000"+"的车险报价,请您查收");
+        map.put("path","confirmInformationTemplateScreen");
+        map.put("params",weChatParam);
+
+        Map burialPoint = new HashMap();
+        burialPoint.put("type", "burialPoint");
+        burialPoint.put("pointType", "EventPoint");
+        burialPoint.put("pointName", "ShareClick");
+
+        Map shareType = new HashMap();
+        shareType.put("shareType","carInsuranceQuotation");
+
+        burialPoint.put("pointParams", shareType);
+        burialPoint.put("next-step", map);
+
+
+        System.out.println(JSON.toJSONString(burialPoint));
+    }
 
     @Data
     private static class CodeEntry implements Serializable {
@@ -80,6 +115,31 @@ public class TestJson1 {
         Arrays.stream(sss).forEach(ssss -> {
             System.out.println(ssss);
         });
+        String dealerCodes = "VW01065,SC30494,VW24729,BK160812,BK20370,BK10211,BK20211,BK20490,";
+        List<String> dealerCodeList = Arrays.asList(dealerCodes.split(","));
+        System.out.println("dealerCodeList =  " + JSON.toJSONString(dealerCodeList));
+
+        String ssss = "2023-06-05 10:32:38";
+        long time = 1685935806365L;
+
+        Date d = new Date(time);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd HH:mm:ss");
+
+        String tt = sdf.format(d);
+
+        System.out.println("tt >> " +tt);
+
+
+
+        SimpleDateFormat sdf2 = new SimpleDateFormat("MM-dd HH:mm");
+        try {
+            Date date = sdf2.parse(tt);
+            String s1 = sdf2.format(date);
+            System.out.println("s1 = " + s1);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     @Data
@@ -451,6 +511,93 @@ public class TestJson1 {
      }
 
 
+
+     public static class MbImageValidatorMO implements Serializable {
+
+         private static final long serialVersionUID = -8104988407577419946L;
+
+         private Long id;
+         private String category;
+         private String productNo;
+         private String imageTypes;
+         private String imageNames;
+         private String imageGroup;
+         private Integer min;
+         private Integer max;
+         private String errorHint;
+
+         public Long getId() {
+             return id;
+         }
+
+         public void setId(Long id) {
+             this.id = id;
+         }
+
+         public String getCategory() {
+             return category;
+         }
+
+         public void setCategory(String category) {
+             this.category = category;
+         }
+
+         public String getProductNo() {
+             return productNo;
+         }
+
+         public void setProductNo(String productNo) {
+             this.productNo = productNo;
+         }
+
+         public String getImageTypes() {
+             return imageTypes;
+         }
+
+         public void setImageTypes(String imageTypes) {
+             this.imageTypes = imageTypes;
+         }
+
+         public String getImageNames() {
+             return imageNames;
+         }
+
+         public void setImageNames(String imageNames) {
+             this.imageNames = imageNames;
+         }
+
+         public String getImageGroup() {
+             return imageGroup;
+         }
+
+         public void setImageGroup(String imageGroup) {
+             this.imageGroup = imageGroup;
+         }
+
+         public Integer getMin() {
+             return min;
+         }
+
+         public void setMin(Integer min) {
+             this.min = min;
+         }
+
+         public Integer getMax() {
+             return max;
+         }
+
+         public void setMax(Integer max) {
+             this.max = max;
+         }
+
+         public String getErrorHint() {
+             return errorHint;
+         }
+
+         public void setErrorHint(String errorHint) {
+             this.errorHint = errorHint;
+         }
+     }
 
 
 

@@ -1,8 +1,19 @@
 package com.example.demo.stream;
 
+import com.alibaba.fastjson.JSON;
+import com.example.demo.pattern_design.A;
+import com.example.demo.utils.ZhuConstant;
 import lombok.Data;
+import org.apache.commons.lang3.text.StrBuilder;
+import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 
+import java.io.Serializable;
+import java.lang.reflect.InvocationHandler;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.*;
@@ -13,7 +24,80 @@ import java.util.stream.Stream;
 public class TestStream {
 
     @Test
-    public void mainTest() {
+    public void testMap() {
+        Map<String, String> map1 = new HashMap<>();
+        // 如果这个key在map中不存在 则插入，如果存在则返回 key 对应的值，并不会更新map中key对应的值。
+        String v = map1.putIfAbsent("1", "firstPut");
+        System.out.println("map = " + map1 + " , v = " + v);
+        String v2 = map1.putIfAbsent("1", "secondPut");
+        System.out.println("map = " + map1 + " , v2 = " + v2);
+    }
+
+
+    @Test
+    public void testStreamOpt() {
+        Apple apple1 = new Apple();
+        apple1.setName("苹果1");
+        apple1.setWeight(1);
+
+        Apple apple2 = new Apple();
+        apple2.setName("苹果2");
+        apple2.setWeight(2);
+
+        Apple apple3 = new Apple();
+        apple3.setName("苹果3");
+        apple3.setWeight(4);
+
+        List<Apple> appleList = Arrays.asList(apple1, apple2, apple3);
+        List<Integer> appleMapList = appleList.stream()
+                .map(apple -> {
+                    apple.setWeight(apple.getWeight() * 3);
+                    return apple.getWeight();
+                }).collect(Collectors.toList());
+
+
+        // peek 和 map 的区别：peek 中 参数类型为 Consumer，它的 accept 方法没有返回值
+        // 所以，不能形成新的流，但能修改引用类型字段的值
+
+        List<Apple> applePeekList = appleList.stream().peek(apple -> {
+            apple.setWeight(apple.getWeight() * 5);
+        }).collect(Collectors.toList());
+
+        System.out.println("appleList >>> " + JSON.toJSONString(appleList) + " , applePeekList = " + JSON.toJSONString(applePeekList));
+
+        // flatMap 和 map不一样的地方在于，flatMap 中返回的依然是 Stream
+
+        List<String> nameList = appleList.stream().flatMap(apple -> {
+            Stream<String> stringStream = Stream.of(apple.getName());
+            return stringStream;
+        }).collect(Collectors.toList());
+
+        System.out.println("nameList ======= " + nameList);
+    }
+
+    /**
+     * 测试函数式接口
+     */
+    @Test
+    public void testFunctionOpt() {
+
+        String name = "pig";
+        int age = 23;
+        MyStudent myStudent = testBIFunction(name, age, (s, integer) -> {
+            MyStudent myStudent1 = new MyStudent(name, age);
+            return myStudent1;
+        });
+        System.out.println("myStudent = " + JSON.toJSONString(myStudent));
+    }
+
+
+    public MyStudent testBIFunction(String name, Integer age, BiFunction<String, Integer, MyStudent> consumer) {
+        return consumer.apply(name, age);
+    }
+
+
+    @Test
+    public void test1() {
         ResourceVO r1 = new ResourceVO();
         r1.setImageGroup("group1");
         r1.setImageType("type1");
@@ -42,14 +126,53 @@ public class TestStream {
 
         List<ResourceVO> resourceVOList = Arrays.asList(r1, r2, r3, r4);
 
-        Map<String, List<String>> listMap = resourceVOList.stream().collect(Collectors.toMap(ResourceVO::getImageGroup, re -> {
+        Map<String, String> map = resourceVOList.stream().collect(Collectors.toMap(ResourceVO::getImageGroup, re -> {
             String imageType = re.imageType;
-            System.out.println("imageType >>>" + imageType + ", groupType = " + re.imageGroup);
-            return new ArrayList<>();
-        }, (k1, k2) -> k1));
+            System.out.println("--------- imageType >>>" + imageType + ", groupType = " + re.imageGroup);
+            return imageType;
+        }, (k1, k2) -> {
+            return k1;
+        }));
+        System.out.println("listMap2 = " + map);
+    }
 
-        System.out.println("listMap = " + listMap);
+    @Test
+    public void mainTest() {
+        ResourceVO r1 = new ResourceVO();
+        r1.setImageGroup("group1");
+        r1.setImageType("type1");
+        r1.setUrl("url1");
+        r1.setStep("Step12");
 
+
+        ResourceVO r2 = new ResourceVO();
+        r2.setImageGroup("group1");
+        r2.setImageType("type2");
+        r2.setUrl("url2");
+        r2.setStep("Step2");
+
+        ResourceVO r3 = new ResourceVO();
+        r3.setImageGroup("group2");
+        r3.setImageType("type3");
+        r3.setUrl("url3");
+        r3.setStep("Step1");
+
+        ResourceVO r4 = new ResourceVO();
+        r4.setImageGroup("group3");
+        r4.setImageType("type4");
+        r4.setUrl("url4");
+        r4.setStep("Step21");
+
+        List<ResourceVO> resourceVOList = Arrays.asList(r1, r2, r3, r4);
+
+        System.out.println("resourceVOList = " + JSON.toJSONString(resourceVOList));
+
+        Map<String, String> map = resourceVOList.stream().collect(Collectors.toMap(ResourceVO::getImageGroup, re -> {
+            String imageType = re.imageType;
+            System.out.println("--------- imageType >>>" + imageType + ", groupType = " + re.imageGroup);
+            return imageType;
+        }, (k1, k2) -> k2));
+        System.out.println("listMap2 = " + map);
 
         /**
          * 根据 imageGroup 将 imageType 分类
@@ -59,6 +182,7 @@ public class TestStream {
             List<String> imageTypes = groupAndTypeMap.computeIfAbsent(resourceVO.imageGroup, a -> new ArrayList<>());
             imageTypes.add(resourceVO.imageType);
         });
+
 
         System.out.println("groupAndTypeMap >>>>>>>>" + groupAndTypeMap);
 
@@ -72,7 +196,7 @@ public class TestStream {
 
         System.out.println("------after sorted resourceVOList = " + resourceVOList);
 
-        System.out.println("---------- groupedMap ------" + groupedMap);
+        System.out.println("---------- groupedMap ------" + JSON.toJSONString(groupedMap));
 
 
         System.out.println("-----------------------------------------------");
@@ -91,9 +215,11 @@ public class TestStream {
 
         System.out.println("---------- integerListMap ------" + integerListMap);
         List<ResourceVO> resourceVOList1 = new ArrayList<>();
-        integerListMap.entrySet().stream().sorted(Comparator.comparing(Map.Entry::getKey)).forEach(e -> {
-            resourceVOList1.addAll(e.getValue());
-        });
+        integerListMap.entrySet().stream()
+                .sorted(Comparator.comparing(Map.Entry::getKey))
+                .forEach(e -> {
+                    resourceVOList1.addAll(e.getValue());
+                });
         System.out.println("---------- resourceVOList1 ------" + resourceVOList1);
         resourceVOList = resourceVOList1;
         System.out.println("after sorted resourceVOList  = " + resourceVOList.hashCode());
@@ -112,11 +238,7 @@ public class TestStream {
         return vo;
     }
 
-    /**
-     * stream不存储数据，而是按照特定的规则对数据进行计算，一般会输出结果。
-     * stream不会改变数据源，通常情况下会产生一个新的集合或一个值。
-     * stream具有延迟执行特性，只有调用终端操作时，中间操作才会执行。
-     */
+
     @Test
     public void testStudent() {
         MyStudent zhanshan = new MyStudent("张三", 26);
@@ -140,9 +262,6 @@ public class TestStream {
                 return o2.age - o1.age;
             }
         }).collect(Collectors.toList());
-
-
-
 
 
         /** 求所有学生的年龄之和 */
@@ -228,28 +347,17 @@ public class TestStream {
             System.out.println(">>>> name = " + s);
         }
 
-        List<String> stringList = myStudentList.stream()
-                .map(myStudent3 -> {
-                    MyStudent myStudent4 = new MyStudent(myStudent3.getName() + "**", myStudent3.age);
-                    return myStudent4.name;
-                }).collect(Collectors.toList());
-
-        List<String> stringList1 = myStudentList.stream()
-                .map(MyStudent::getName)
-                .collect(Collectors.toList());
-
-        System.out.println("修改姓名后的数据 = " + stringList + ", 原始数据 >>> " + stringList1);
-
-
         List<String> nameChangeList = myStudentList.stream()
                 .map(myStudent3 -> {
                     myStudent3.name += "_xxx";
                     return myStudent3.name;
                 }).collect(Collectors.toList());
 
-        System.out.println("修改姓名后的数据2 = " + nameChangeList + ", 原始数据 >>> " + stringList1);
+        List<String> stringList1 = myStudentList.stream()
+                .map(MyStudent::getName)
+                .collect(Collectors.toList());
 
-        /** 输出结果为：修改姓名后的数据2 = [张三_xxx, 张三_xxx, 王五_xxx], 原始数据 >>> [张三, 张三, 王五], 可以看出 Stream 不会修改源数据 */
+        System.out.println("修改姓名后的数据2 = " + nameChangeList + ", 原始数据 >>> " + stringList1);
 
 
         /** ------------------------------------ 使用 reduce ----------------------------------------------------*/
@@ -302,6 +410,205 @@ public class TestStream {
                 .collect(new SumCollector<>(Apple::getWeight));
 
         System.out.println("all apples weight  >>> " + weights);
+
+        List<Apple> sortedApples = Stream.of(apple1, apple2, apple3)
+                .sorted(Comparator.comparing(Apple::getWeight))
+                .collect(Collectors.toList());
+    }
+
+    @Test
+    public void testGeneric() {
+        /**
+         * ------------------------------------------------- 泛型相关 -------------------------------------------------------------------
+         * <? super T>表示类型参数的范围是 T 和 T 的超类，直至 Object
+         * <? extends T>表示类型参数的范围是 T 和 T 的子类
+         */
+
+//        // 能存不能取， 为啥能存不能取，因为 <? super Number> 能确定的是 Number 的任意父类包含Number
+//        // 假设就是 Number ，那么如下：Double 和 Integer 都是 Number 的子类，会被强制转为 Number
+//        List<Number> numberList = new ArrayList<>();
+//        numberList.add(new Double(2.5));
+//        numberList.add(new Integer(2));
+//
+//        List<? super Number> numList = new ArrayList<>();
+//        numList.add(new Integer(1));
+//
+//        //
+//        List<? extends Number> numbers = new ArrayList<>();
+//
+//        Number number = numbers.get(0);
+//
+//
+//
+//        //--------------------------------------------
+//
+//        List<Integer> integerList = new ArrayList<>();
+//        List<Number> numberList2 = new ArrayList<>();
+//        copy(numberList2, integerList);
+
+        List<?> list = new ArrayList<Integer>();
+        List<Float> floatList = new ArrayList<>();
+        list = floatList;
+
+        /**
+         * List <? extends Number> 确定参数的上界, 即只能传入的是 Number 的子类：可以接受 List<Integer> 或 List<Float>
+         * List <? super Number> 确定的是下界, 即只能传入的是 Number 的父类：可以接受 List<Object> 但不能接受 List<Integer>
+         */
+//        List<? super Number> interList ;
+//        List<Integer> nList = new ArrayList<>();
+//        interList = nList; // 会报错
+
+
+
+        List<Double> doubleList = new ArrayList<>();
+        doubleList.add(2.0);
+
+        printVal(doubleList);
+
+        Comparator<Apple> appleComparator = comparing(Apple::getWeight);
+        Apple apple1 = new Apple();
+        apple1.setWeight(1);
+        apple1.setName("apple1");
+
+        Apple apple2 = new Apple();
+        apple2.setWeight(2);
+        apple2.setName("apple2");
+
+        int res = appleComparator.compare(apple1, apple2);
+
+        System.out.println("res ==== "+res);
+
+        // B 类必须是 Comparable 的实现类，否则编译报错，因为 comparing 的入参 keyExtractor 指定的类型 U 必须是 Comparable的子类或实现类
+        Comparator<A> aComparator = comparing(A::getB);
+
+
+        Apple[] appleList = new Apple[2];
+        appleList[0] = apple1;
+        appleList[1] = apple2;
+
+        Arrays.sort(appleList, comparing(Apple::getWeight));
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            Date date = sdf.parse("2023-06-23 15:18:00");
+            boolean flag = judgeInvalidTime(date);
+            System.out.println("flag = " + flag);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 判断 date 比当前时间的3天之前是大还是小，大 返回 true
+     */
+    public boolean judgeInvalidTime(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -3);
+        Date invalidTime = calendar.getTime();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        String dateStr = sdf.format(invalidTime);
+        System.out.println(dateStr);
+
+        // date 日期大于等于 invalidTime 返回true
+        return date.after(invalidTime);
+    }
+
+    private void printVal(List<? extends Number> list) {  // ? extends Number 能取不能存, 表示的是 Number 的子类型，
+        if (list != null && list.size() >0) {
+            // 这里最好用 Number 类型去接，假设你用 Integer 去接，传入 list 的是 Float 就会报错，如下：
+            for (Number number : list) {
+                System.out.println("number = " + number);
+            }
+        }
+    }
+
+    public static <T> void copy(List<? super T> dest, List<? extends T> src) {
+        int srcSize = src.size();
+        if (srcSize > dest.size())
+            throw new IndexOutOfBoundsException("Source does not fit in dest");
+
+        ListIterator<? super T> di=dest.listIterator();
+        ListIterator<? extends T> si=src.listIterator();
+        for (int i=0; i<srcSize; i++) {
+            di.next();
+            di.set(si.next());
+        }
+    }
+
+    public static <T, U extends Comparable<? super U>> Comparator<T> comparing(Function<? super T, ? extends U> keyExtractor) {
+        Objects.requireNonNull(keyExtractor);
+        return (Comparator<T> & Serializable) (c1, c2) -> keyExtractor.apply(c1).compareTo(keyExtractor.apply(c2));
+    }
+
+    @Data
+    class A {
+        private String aName;
+
+        private B b;
+    }
+
+    @Data
+    class B implements Comparable<B>{
+        private String bName;
+
+        @Override
+        public int compareTo(@NotNull TestStream.B o) {
+            return bName.compareTo(o.bName);
+        }
+    }
+
+
+    @Test
+    public void testDefinedFilter() {
+        Apple apple1 = new Apple();
+        apple1.setName("苹果1");
+        apple1.setWeight(1);
+
+        Apple apple2 = new Apple();
+        apple2.setName("苹果2");
+        apple2.setWeight(2);
+
+        Apple apple3 = new Apple();
+        apple3.setName("苹果3");
+        apple3.setWeight(3);
+
+        Apple apple4 = new Apple();
+        apple4.setName("苹果2");
+        apple4.setWeight(4);
+
+        List<Apple> appleList = new ArrayList<>();
+        appleList.add(apple1);
+        appleList.add(apple2);
+        appleList.add(apple3);
+        appleList.add(apple4);
+
+        List<Apple> filteredApples = appleList.stream()
+                .filter(ZhuConstant.distinctByKey(apple -> {
+                    return apple.getName();
+                }))
+                .collect(Collectors.toList());
+
+        System.out.println("filtered >>> apples =  " + JSON.toJSONString(filteredApples));
+
+
+        List<BigDecimal> list = Arrays.asList(
+                BigDecimal.valueOf(9.99),
+                BigDecimal.valueOf(2.99),
+                BigDecimal.valueOf(8.99));
+
+        // method reference
+        List<Invoice> invoices = fakeInvoice(list, Invoice::new);
+    }
+
+    static List<Invoice> fakeInvoice(List<BigDecimal> list, Function<BigDecimal, Invoice> func) {
+        List<Invoice> result = new ArrayList<>();
+
+        for (BigDecimal amount : list) {
+            result.add(func.apply(amount));
+        }
+        return result;
     }
 
 
@@ -336,6 +643,131 @@ public class TestStream {
                 .filter(v -> v > 2)
                 .findAny().get();
         System.out.println("a = " + a);
+    }
+
+    @Test
+    public void testGroupingBy() {
+
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("1", "mmm");
+        String v = stringMap.computeIfPresent("1", (a, b) -> {
+            System.out.println("a = "+a + " , upper = " + a.toUpperCase() + " , b = " + b);
+            return a.toUpperCase(Locale.ROOT);
+        });
+
+        System.out.println("v = " + v);
+
+
+        List<String> couponNameList = Arrays.asList("基础保养券", "大额维修券", "维修服务券", "尊享换新券", "大额维修券", "基础保养券");
+
+        Map<String, AtomicInteger> map = new HashMap<>();
+        couponNameList.forEach(s -> {
+            AtomicInteger sameCouponNums = map.computeIfAbsent(s, a -> new AtomicInteger(0));
+            sameCouponNums.addAndGet(1);
+        });
+
+
+
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<String, AtomicInteger> entry : map.entrySet()) {
+            if (entry.getValue().get() > 1) {
+                sb.append(entry.getKey()).append("x").append(entry.getValue().get()).append(",");
+            } else {
+                sb.append(entry.getKey()).append(",");
+            }
+        }
+
+        String couponNames = sb.substring(0, sb.length() - 1);
+
+        System.out.println("sb = " + couponNames);
+        System.out.println("map = " + JSON.toJSONString(map));
+
+        Map<String, List<String>> map1 = couponNameList.stream().collect(Collectors.groupingBy(s -> {
+            System.out.println("s >> " + s);
+            return s;
+        }));
+        System.out.println("map1 == " + JSON.toJSONString(map1));
+
+
+      /***  自定义 groupingBy 实现 */
+
+        Map<String, String> aa = couponNameList.stream().collect(Collectors.groupingBy(new Function<String, String>() {
+
+            @Override
+            public String apply(String s) {
+//                System.out.println("s >>>-------- " + s);
+                return s;
+            }
+        }, new Supplier<Map<String, String>>() {
+            @Override
+            public Map<String, String> get() {
+                return new HashMap<>();
+            }
+        }, new Collector<String, Map<String, AtomicInteger>, String>() {
+            // String 是输入数据类型
+            // Map<String, AtomicInteger> 结果容器的类型
+            // String 执行最后终结操作的返回值，即 下面的 finisher 方法的返回值
+
+            @Override
+            public Supplier<Map<String, AtomicInteger>> supplier() {
+                return HashMap::new;
+            }
+
+            @Override
+            public BiConsumer<Map<String, AtomicInteger>, String> accumulator() {
+                return (map, s) -> {
+//                    System.out.println("= ====== = s = " + s);
+                    AtomicInteger atomicInteger = map.computeIfAbsent(s, a -> new AtomicInteger(0));
+                    atomicInteger.addAndGet(1);
+                };
+            }
+
+            @Override
+            public BinaryOperator<Map<String, AtomicInteger>> combiner() {
+                // 合并 并行处理的结果
+                return (map1, map2) -> {
+                    // 我们这里不是并行的，所以 combiner 方法是执行不到的
+                    System.out.println("map1 = "+JSON.toJSONString(map1) + " , map2 = " + JSON.toJSONString(map2));
+                    map1.putAll(map2);
+                    return map1;
+                };
+            }
+
+            @Override
+            public Function<Map<String, AtomicInteger>, String> finisher() {
+                // 计算最终的执行结果，作为 Map 的 value
+                return map -> {
+                    StringBuilder sb = new StringBuilder();
+                    System.out.println("map = " + JSON.toJSONString(map));
+
+                    for (Map.Entry<String, AtomicInteger> entry : map.entrySet()) {
+                        if (entry.getValue().get() > 1) {
+                            sb.append(entry.getKey()).append("x").append(entry.getValue().get()).append(",");
+                        } else {
+                            sb.append(entry.getKey()).append(",");
+                        }
+                    }
+                    String ss = sb.substring(0, sb.length() - 1);
+                    System.out.println("ss == " + ss);
+                    return ss;
+                };
+            }
+
+            @Override
+            public Set<Characteristics> characteristics() {
+                Set<Characteristics> characteristics = new HashSet<>();
+                // 指定该收集器支持并发处理（前面也发现我们采用了线程安全的AtomicInteger方式）
+                characteristics.add(Characteristics.CONCURRENT);
+                // 声明元素数据处理的先后顺序不影响最终收集的结果
+                characteristics.add(Characteristics.UNORDERED);
+                // 注意:这里没有添加下面这句，因为finisher方法对结果进行了处理，非恒等转换
+                // characteristics.add(Characteristics.IDENTITY_FINISH);
+                return characteristics;
+            }
+        }));
+
+        System.out.println("aa ========" + JSON.toJSONString(aa));
+
     }
 
 
@@ -385,6 +817,122 @@ public class TestStream {
 
         public Course(String courseName) {
             this.courseName = courseName;
+        }
+    }
+
+    @Test
+    public void testDDD() {
+        Invoice invoice = new Invoice(BigDecimal.valueOf(1.99));
+        invoice.setNo("111");
+        invoice.qty = 3;
+
+        InvoiceCalculator formula = new InvoiceCalculator();
+
+        // method reference
+        BigDecimal result2 = calculate(formula, invoice, InvoiceCalculator::normal);    // 5.97
+        System.out.println("result2 = " + result2);
+
+        // method reference
+        BigDecimal result4 = calculate(formula, invoice, InvoiceCalculator::promotion); // 5.37
+
+        // 类型于下面的用法：
+        // List::add 方法是一个实例方法，它的第一个参数是隐式的，即为调用这个方法的对象，而第二个参数是显式的，即为方法的参数。
+        // 所以这方法的然名是 (List，tring) -> boolean,而 Bionsumer 的签名是 (list,String) -> void,
+        // 所以可以使用 List::add 来代替 BiConsumer。
+        // 这种情况下，第一个参数是隐式的，第二个参数是显式的，所以可以使用 List::add 来代替 Biconsumer。
+
+        BiConsumer<List<String>, String> biConsumer = List::add;
+
+        System.out.println("----------------------------------------------------------------------------------------------------------");
+        Supplier<InvoiceCalculator> invoiceCalculatorSupplier = InvoiceCalculator::new;
+        InvoiceCalculator invoiceCalculator = invoiceCalculatorSupplier.get();
+
+        BiConsumer<InvoiceCalculator, String> addNameConsumer = InvoiceCalculator::setName;
+
+        addName(invoiceCalculator, "zhu-jiang-tao", addNameConsumer);
+        System.out.println("-------- name ----------" + invoiceCalculator.name);
+
+        BigDecimal result5 = doSth(invoiceCalculator, InvoiceCalculator::defaultVal);
+        System.out.println("result5 = " + result5);
+
+        BiFunction<String, String, Integer> compare = String::compareToIgnoreCase;
+
+        int res = compareIgnoreCase("a", "b", compare);
+        System.out.println("res == " + res);
+
+//        BiPredicate
+
+        BiPredicate<String, String> predicate = String::equalsIgnoreCase;
+
+    }
+
+    static BigDecimal calculate(InvoiceCalculator formula, Invoice s1,
+                                BiFunction<InvoiceCalculator, Invoice, BigDecimal> func) {
+        return func.apply(formula, s1);
+    }
+
+    static Integer compareIgnoreCase(String a, String b, BiFunction<String, String, Integer> mapper) {
+        return mapper.apply(a, b);
+    }
+
+    static boolean testPredict(String a, String b, BiPredicate<String, String> predicate) {
+        return predicate.test(a, b);
+    }
+
+    /**
+     * BiConsumer 是没有返回值的，如果需要返回值 可以使用 BiFunction
+     */
+    static void addName(InvoiceCalculator formula, String name, BiConsumer<InvoiceCalculator, String> biConsumer) {
+        biConsumer.accept(formula, name);
+    }
+
+    static BigDecimal doSth(InvoiceCalculator formula, Function<InvoiceCalculator, BigDecimal> mapper) {
+        return mapper.apply(formula);
+    }
+
+    @Data
+    static
+    class Invoice {
+        String no;
+        BigDecimal unitPrice;
+        Integer qty;
+
+        public Invoice() {
+        }
+
+        public Invoice(BigDecimal bigDecimal) {
+            unitPrice = bigDecimal;
+        }
+
+        //... generated by IDE
+    }
+
+    static class InvoiceCalculator {
+
+        private String name;
+
+        public BigDecimal normal(Invoice obj) {
+            return obj.getUnitPrice().multiply(BigDecimal.valueOf(obj.qty));
+        }
+
+        public BigDecimal defaultVal() {
+            return BigDecimal.valueOf(20);
+        }
+
+        public BigDecimal promotion(Invoice obj) {
+            return obj.getUnitPrice()
+                    .multiply(BigDecimal.valueOf(obj.qty))
+                    .multiply(BigDecimal.valueOf(0.9))
+                    .setScale(2, RoundingMode.HALF_UP);
+        }
+
+        public void setName(String name) {
+            this.name = name;
+            System.out.println("--------- name = " + name);
+        }
+
+        public String getName() {
+            return name;
         }
     }
 }
